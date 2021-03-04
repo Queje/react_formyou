@@ -15,21 +15,21 @@ export const fetchToRegister = (data) => {
         body: JSON.stringify(data),
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        console.log("Une erreur est survenue:", response.statusText);
+        dispatch(authActions.registerFail());
+        Cookies.remove("token");
+        dispatch(displayError("Erreur d'enregistrement"));
+        return false;
       }
-
       const token = await response.headers.get("authorization").split(" ")[1];
       const user = await response.json();
       const userToRegister = { token, user };
       dispatch(authActions.registerSuccess(userToRegister));
       Cookies.set("token", token);
       dispatch(displaySuccess("Inscription réussie"));
+      return true;
     } catch (error) {
       console.log(error);
-      dispatch(authActions.registerFail());
-      Cookies.remove("token");
-      dispatch(displayError("Erreur d'enregistrement"));
-      return false;
     }
   };
 };
@@ -37,7 +37,6 @@ export const fetchToRegister = (data) => {
 export const fetchToLogin = (data) => {
   return async (dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
-
     try {
       const response = await fetch(`${API_URL}/login`, {
         method: "post",
@@ -47,7 +46,11 @@ export const fetchToLogin = (data) => {
         body: JSON.stringify(data),
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        console.log("Une erreur est survenue:", response.statusText);
+        dispatch(authActions.loginFail());
+        Cookies.remove("token");
+        dispatch(displayError("Aucun utilisateur correspondant"));
+        return false;
       }
       const token = await response.headers.get("authorization").split(" ")[1];
       const user = await response.json();
@@ -55,12 +58,9 @@ export const fetchToLogin = (data) => {
       dispatch(authActions.loginSuccess(userToLog));
       Cookies.set("token", token);
       dispatch(displaySuccess("Connexion réussie"));
+      return true;
     } catch (error) {
       console.log(error);
-      dispatch(authActions.loginFail());
-      Cookies.remove("token");
-      dispatch(displayError("Aucun utilisateur correspondant"));
-      return false;
     }
   };
 };
@@ -69,7 +69,7 @@ export const fetchCurrentUser = (token) => {
   return async (dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
     try {
-      const response = await fetch(`${API_URL}/api/v1/profile`, {
+      const response = await fetch(`${API_URL}/api/profile`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",

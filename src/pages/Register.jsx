@@ -20,6 +20,7 @@ const Register = () => {
     };
     e.preventDefault();
     if (await dispatch(fetchToRegister(data))) {
+      console.log("it awaited ok");
       history.push("/");
     }
   };

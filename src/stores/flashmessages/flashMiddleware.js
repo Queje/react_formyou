@@ -5,7 +5,7 @@ export const displaySuccess = (message) => {
     dispatch(flashActions.flashSuccess(message));
     setTimeout(() => {
       dispatch(flashActions.removeFlash());
-    }, 2000);
+    }, 6000);
   };
 };
 
@@ -14,7 +14,7 @@ export const displayInfo = (message) => {
     dispatch(flashActions.flashInfo(message));
     setTimeout(() => {
       dispatch(flashActions.removeFlash());
-    }, 2000);
+    }, 6000);
   };
 };
 
@@ -23,7 +23,7 @@ export const displayWarning = (message) => {
     dispatch(flashActions.flashWarning(message));
     setTimeout(() => {
       dispatch(flashActions.removeFlash());
-    }, 2000);
+    }, 6000);
   };
 };
 
@@ -32,6 +32,6 @@ export const displayError = (message) => {
     dispatch(flashActions.flashError(message));
     setTimeout(() => {
       dispatch(flashActions.removeFlash());
-    }, 2000);
+    }, 6000);
   };
 };
