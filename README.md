@@ -10,6 +10,7 @@
 * Basic Layout (navbar, flashmessages, footer)
 * Cookies Js
 * Pages : Home, Register, Login, Profile
+* React Icons
 
 ## Usage
 
