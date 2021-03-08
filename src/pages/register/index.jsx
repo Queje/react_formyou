@@ -8,6 +8,9 @@ import { fetchToRegister } from "../../stores/authentication/authMiddleware";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [role, setRole] = useState("student");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -15,8 +18,11 @@ const Register = () => {
   const register = async (e) => {
     const data = {
       user: {
+        first_name: firstName,
+        last_name: lastName,
         email: email,
         password: password,
+        role: role
       },
     };
     e.preventDefault();
@@ -30,6 +36,20 @@ const Register = () => {
     <div className="register">
       <h1>Sign Up</h1>
       <form onSubmit={register}>
+      <input
+          type="text"
+          placeholder="first name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      <input
+          type="text"
+          placeholder="last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
         <input
           type="text"
           placeholder="email"
@@ -44,6 +64,10 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <select name="role" onChange={(e) => setRole(e.target.value)} >
+          <option value="student">Etudiant</option>
+          <option value="teacher">Professeur</option>
+        </select>
         <input id="submit-button" type="submit" value="S'inscrire" />
       </form>
       <hr></hr>
