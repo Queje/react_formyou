@@ -1,7 +1,7 @@
 import './style.scss'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { fetchToRegister } from "../../stores/authentication/authMiddleware";
 
@@ -51,7 +51,7 @@ const Register = () => {
           required
         />
         <input
-          type="text"
+          type="email"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -71,10 +71,9 @@ const Register = () => {
         <input id="submit-button" type="submit" value="S'inscrire" />
       </form>
       <hr></hr>
-      <div className="already-register" >
+      <Link to="/login" >
         <p>Déjà un compte ? </p>
-        <button type="button" onClick={e => { history.push("/login");}} >Login</button>
-      </div>
+      </Link>
     </div>
   );
 };
