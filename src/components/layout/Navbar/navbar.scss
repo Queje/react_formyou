@@ -1,0 +1,15 @@
+.navbar {
+    background-color: darkorange;
+
+    nav {
+        width: max-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        vertical-align: middle!important;
+    };
+
+    .navbartitle {
+        color: antiquewhite;
+    }
+}

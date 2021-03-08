@@ -16,22 +16,26 @@ const Navbar = () => {
     history.push("/");
   };
   return (
-    <div className="Navbar">
-      <h1>Navbar</h1>
+    <div className="navbar navbar-expand-lg">
       <nav>
-        <Link to="/">Home</Link>
+        <div className="navbar-nav d-lg-flex align-items-center">
+          <Link className="nav-link" to="/">
+            <h1 className="navbartitle">FormYou</h1>
+          </Link>
+        
         {!currentUser && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link className="nav-link" to="/login">Login</Link>
+            <Link className="nav-link" to="/register">Register</Link>
           </>
         )}
         {currentUser && (
           <>
-            <Link to="/profile">Profile</Link>
-            <button onClick={logout}>Se déconnecter</button>
+            <Link className="nav-link" to="/profile">Profile</Link>
+            <button className="nav-link" onClick={logout}>Se déconnecter</button>
           </>
         )}
+        </div>
       </nav>
     </div>
   );
