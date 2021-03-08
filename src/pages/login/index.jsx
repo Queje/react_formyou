@@ -1,3 +1,4 @@
+import './style.scss'
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -25,26 +26,25 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <>
-        <form onSubmit={login}>
-          <input
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <input type="submit" value="Envoyer" />
-        </form>
-      </>
+    <div className="login" >
+      <h1>Login</h1>
+      <form onSubmit={login}>
+        <input
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input id="submit-button" type="submit" value="Envoyer" />
+      </form>
     </div>
   );
 };
