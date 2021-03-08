@@ -64,9 +64,10 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <select name="role" onChange={(e) => setRole(e.target.value)} >
+        <select value= {role} name="role" onChange={(e) => setRole(e.target.value)} >
           <option value="student">Etudiant</option>
           <option value="teacher">Professeur</option>
+          <option value="admin">Administrateur</option>
         </select>
         <input id="submit-button" type="submit" value="S'inscrire" />
       </form>
