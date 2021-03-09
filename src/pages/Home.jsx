@@ -1,11 +1,11 @@
 import React from "react";
-import TrainingList from './TrainingList';
+import CourseList from './CourseList';
 
 const Home = () => {
   return (
     <div className="Home">
       <h1>This is home</h1>
-      <TrainingList />
+      <CourseList />
     </div>
   );
 };
