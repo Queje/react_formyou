@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const useFetch = () => {
   const API_URL = process.env.REACT_APP_API_URL;
@@ -6,11 +7,45 @@ const useFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const get = (path, next = false, previousResults) => {
+  const get = (query) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL)
+    fetch(API_URL + query, {
+      method: "get",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          setError("Une erreur est survenue");
+        }
+      })
+      .then((response) => {
+        setData(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const patch = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "patch",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -32,6 +67,7 @@ const useFetch = () => {
     error,
     isLoading,
     get,
+    patch,
   };
 };
 export default useFetch;
