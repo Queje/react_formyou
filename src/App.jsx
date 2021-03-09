@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import Home from "pages/Home";
 import Login from "pages/login/index";
 import Register from "pages/register/index";
-import Profile from "pages/Profile";
+import Profile from "pages/profile/Profile";
 import Navbar from "components/layout/Navbar/index";
 import Footer from "components/layout/Footer";
 import FlashMessage from "components/layout/FlashMessage";
