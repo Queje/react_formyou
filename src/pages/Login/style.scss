@@ -1,4 +1,4 @@
-.login{
+.login {
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
@@ -8,17 +8,17 @@
   margin-right: auto;
   border: grey solid 1px;
   padding: 20px 20px 20px 20px;
-  h1{
+  h1 {
     justify-content: right;
   }
-  form{
+  form {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    input{
+    input {
       margin-bottom: 5px;
     }
-    #submit-button{
+    #submit-button {
       margin-top: 5px;
     }
   }
