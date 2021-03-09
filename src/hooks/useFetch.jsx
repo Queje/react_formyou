@@ -12,7 +12,7 @@ const useFetch = () => {
     setError(null);
 
     fetch(API_URL + query, {
-      method: "get",
+      method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const useFetch = () => {
     setError(null);
 
     fetch(API_URL + query, {
-      method: "patch",
+      method: "PATCH",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
         "Content-Type": "application/json",
@@ -54,7 +54,6 @@ const useFetch = () => {
         }
       })
       .then((response) => {
-        setData(response);
         setIsLoading(false);
       })
       .catch((error) => {
