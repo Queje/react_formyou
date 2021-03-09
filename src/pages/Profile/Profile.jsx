@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchEditProfile } from "../../stores/authentication/authMiddleware";
-import EditProfile from "../../components/profile/EditProfile";
-import ProfileDisplay from "../../components/profile/ProfileDisplay";
+import { useSelector } from "react-redux";
+import EditProfile from "pages/Profile/components/EditProfile";
+import ProfileDisplay from "pages/Profile/components/ProfileDisplay";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const [editing, setEditing] = useState(false);
-  const dispatch = useDispatch();
 
   const updateProfile = (newDetails) => {
-    dispatch(fetchEditProfile(newDetails));
     setEditing(editing);
   }
 

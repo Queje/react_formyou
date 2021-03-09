@@ -1,19 +1,22 @@
-import './style/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/main.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
-import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Login from "pages/login/index";
-import Register from "pages/register/index";
-import Profile from "pages/Profile/Profile";
-import Navbar from "components/layouts/Navbar/index";
-import Footer from "components/layouts/Footer";
-import FlashMessage from "components/layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
+import AdminRoute from "components/AdminRoute";
+import FlashMessage from "components/layouts/FlashMessage";
+import Cookies from "js-cookie";
+import Home from "pages/Home";
+import Profile from "pages/Profile/Profile";
+import Login from "pages/Login";
+import Register from "pages/Register";
+import Admin from "pages/Admin/Admin";
+import Navbar from "components/layouts/Navbar";
+import Footer from "components/layouts/Footer";
+
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -67,6 +70,11 @@ const App = () => {
               component={Profile}
               path="/profile"
               exact
+            />
+            <AdminRoute
+              currentUser={currentUser}
+              component={Admin}
+              path="/admin"
             />
           </Switch>
         )}
