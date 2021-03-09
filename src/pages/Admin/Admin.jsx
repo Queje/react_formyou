@@ -18,6 +18,12 @@ const Admin = () => {
         <AdminRoute
           currentUser={currentUser}
           component={ManageUsers}
+          path="/admin"
+          exact
+        />
+        <AdminRoute
+          currentUser={currentUser}
+          component={ManageUsers}
           path="/admin/users"
         />
         <AdminRoute

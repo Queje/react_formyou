@@ -12,7 +12,7 @@ import Home from "pages/Home";
 import Login from "pages/Login";
 import Register from "pages/Register";
 import Admin from "pages/Admin/Admin";
-import Profile from "pages/Profile";
+import Profile from "pages/Profile/Profile";
 import Navbar from "components/layout/Navbar";
 import Footer from "components/layout/Footer";
 import FlashMessage from "components/layout/FlashMessage";
