@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { fetchToLogout } from "stores/authentication/authMiddleware";
+import SearchBar from "../SearchBar";
 
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link className="nav-link" to="/">
             <h1 className="navbartitle">FormYou</h1>
           </Link>
-        
+          <SearchBar/>
         {!currentUser && (
           <>
             <Link className="nav-link" to="/login">Login</Link>
