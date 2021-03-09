@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import ManageUsers from "./ManageUsers/ManageUsers";
 import ManageCourses from "./ManageCourses/ManageCourses";
+import ManagePromotions from "./ManagePromotions/ManagePromotions";
 import "./Admin.scss";
 import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
@@ -13,9 +14,6 @@ const Admin = () => {
   return (
     <div className="Admin">
       <Sidebar />
-      {/* <ManageUsers /> */}
-      {/* <ManageCourses /> */}
-
       <Switch>
         <AdminRoute
           currentUser={currentUser}
@@ -26,6 +24,11 @@ const Admin = () => {
           currentUser={currentUser}
           component={ManageCourses}
           path="/admin/courses"
+        />
+        <AdminRoute
+          currentUser={currentUser}
+          component={ManagePromotions}
+          path="/admin/promotions"
         />
       </Switch>
     </div>
