@@ -1,19 +1,20 @@
-import './style/main.scss'
+import './Style/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import { fetchCurrentUser } from "Stores/Authentication/authMiddleware";
 import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Login from "pages/login/index";
-import Register from "pages/register/index";
-import Profile from "pages/Profile";
-import Navbar from "components/layout/Navbar/index";
-import Footer from "components/layout/Footer";
-import FlashMessage from "components/layout/FlashMessage";
-import PrivateRoute from "components/PrivateRoute";
-import PublicRoute from "components/PublicRoute";
+import Home from "Pages/Home/home.jsx";
+import Login from "Pages/Login/login";
+import Register from "Pages/Register/register";
+import Profile from "Pages/Profile/profile";
+import Navbar from "Components/Layout/Navbar/navbar";
+import Footer from "Components/Layout/Footer";
+import FlashMessage from "Components/Layout/FlashMessage";
+import PrivateRoute from "Components/PrivateRoute";
+import PublicRoute from "Components/PublicRoute";
+import Course from './Pages/Course/course';
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -66,6 +67,12 @@ const App = () => {
               currentUser={currentUser}
               component={Profile}
               path="/profile"
+              exact
+            />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Course}
+              path="/courses/:id"
               exact
             />
           </Switch>
