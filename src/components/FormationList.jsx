@@ -8,11 +8,12 @@ const FormationList = (props) => {
   const [courses, setCourses] = useState([]);
   const fetchCourse = async () => {
     const courses = await getCourses();
-    setCourses(courses);
-    console.log(courses.filter((course) => course.teacher_id === currentUser));
+    setCourses(
+      courses.filter((course) => course.teacher_id === currentUser.id)
+    );
   };
   useEffect(() => fetchCourse(), []);
-  console.log(courses);
+  console.log(currentUser);
   return (
     <div>
       <h1>Vous êtes assigné à ces cours :</h1>
