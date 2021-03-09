@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getCourses } from "services/coursesService";
+import CourseCard from "./courseCard";
 
 const FormationList = (props) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -15,13 +16,11 @@ const FormationList = (props) => {
   return (
     <div>
       <h1>Vous êtes assigné à ces cours :</h1>
-      {courses.map((course) => {
-        return (
-          <ul key={course.id}>
-            <li>{course.title}</li>
-          </ul>
-        );
-      })}
+      <div className="row">
+        {courses.map((course) => {
+          return <CourseCard key={course.id} course={course} />;
+        })}
+      </div>
     </div>
   );
 };
