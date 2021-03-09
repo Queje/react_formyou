@@ -1,5 +1,5 @@
-import './style/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/main.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -33,7 +33,7 @@ const App = () => {
     autoLogin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
-
+  console.log(currentUser);
   return (
     <section className="App">
       <Router>
