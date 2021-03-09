@@ -1,19 +1,21 @@
-import './style/main.scss'
+import './Style/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import { fetchCurrentUser } from "Stores/Authentication/authMiddleware.js";
 import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Login from "pages/login/index";
-import Register from "pages/register/index";
-import Profile from "pages/Profile";
-import Navbar from "components/layout/Navbar/index";
-import Footer from "components/layout/Footer";
-import FlashMessage from "components/layout/FlashMessage";
-import PrivateRoute from "components/PrivateRoute";
-import PublicRoute from "components/PublicRoute";
+import Home from "Pages/Home/home.jsx";
+import Login from "Pages/Login/login.jsx";
+import Register from "Pages/Register/register.jsx";
+import Profile from "Pages/Profile/profile.jsx";
+import Navbar from "Components/Layout/Navbar/navbar.jsx";
+import Footer from "Components/Layout/footer";
+import FlashMessage from "Components/Layout/flashMessage.jsx";
+import PrivateRoute from "Components/PrivateRoute";
+import PublicRoute from "Components/PublicRoute";
+import PromotionsCalendar from './Components/PromotionsCalendar/promotionsCalendar.jsx';
+import Course from './Pages/Course/course';
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -67,6 +69,11 @@ const App = () => {
               component={Profile}
               path="/profile"
               exact
+            />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Course}
+              path="/courses/:id"
             />
           </Switch>
         )}

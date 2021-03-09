@@ -20,6 +20,8 @@ const Course = ({ match }) => {
 
   useEffect(() => {fetchPromotions(); getCourse()}, [])
 
+  console.log("Promotion:", promotions)
+
   return (
     <div>
       {course && <h1>{course.title}</h1>}

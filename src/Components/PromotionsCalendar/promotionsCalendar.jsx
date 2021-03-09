@@ -23,10 +23,10 @@ const PromotionsCalendar = ( { promotions, course } ) => {
           list.push(infos)
         })
         setSessions(list)
-        console.log("LIST:", list)
-        console.log("sessions:", promotions)
       }
-  },[course]);
+    },[]);
+    // console.log("LIST:", list)
+    console.log("sessions:", promotions)
       
   return (
     (sessions && sessions.length > 0 ? 
