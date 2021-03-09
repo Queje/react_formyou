@@ -67,13 +67,14 @@ const Register = () => {
         <select value= {role} name="role" onChange={(e) => setRole(e.target.value)} >
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
-          <option value="admin">Admin</option>
+          <option value="admin">Administrator</option>
         </select>
-        <input id="submit-button" type="submit" value="S'inscrire" />
+        <input id="submit-button" type="submit" value="Register" />
       </form>
       <hr></hr>
+      <p>Already have an account?</p>
       <Link to="/login" >
-        <p>Déjà un compte ? </p>
+        <span> Log in now!</span>
       </Link>
     </div>
   );
