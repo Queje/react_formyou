@@ -28,12 +28,10 @@ const App = () => {
     }
     setLoadReady(true);
   };
-
   useEffect(() => {
     autoLogin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
-  console.log(currentUser);
   return (
     <section className="App">
       <Router>
