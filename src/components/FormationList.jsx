@@ -13,7 +13,6 @@ const FormationList = (props) => {
     );
   };
   useEffect(() => fetchCourse(), []);
-  console.log(currentUser);
   return (
     <div>
       <h1>Vous êtes assigné à ces cours :</h1>
