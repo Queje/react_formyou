@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getCourses } from "services/coursesService";
-import { loadCurrentUser } from "stores/authentication/authActions";
 
 const FormationList = (props) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -15,10 +14,10 @@ const FormationList = (props) => {
   console.log(courses);
   return (
     <div>
-      <h1>Vous etes assignez a ces cours :</h1>
+      <h1>Vous êtes assigné à ces cours :</h1>
       {courses.map((course) => {
         return (
-          <ul key={course.title}>
+          <ul key={course.id}>
             <li>{course.title}</li>
           </ul>
         );
