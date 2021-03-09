@@ -8,7 +8,9 @@ const Sidebar = () => {
       <NavLink className="nav-link" to="/admin/users">
         Manage Users
       </NavLink>
-      <p>Manage courses</p>
+      <NavLink className="nav-link" to="/admin/courses">
+        Manage Courses
+      </NavLink>
       <p>Manage promotions</p>
     </div>
   );

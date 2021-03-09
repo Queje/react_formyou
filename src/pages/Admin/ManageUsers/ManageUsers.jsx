@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import "./dashboardusers.scss";
+import "./ManageUsers.scss";
 import useFetch from "hooks/useFetch";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
-const DashboardUsers = () => {
+const ManageUsers = () => {
   const { data, error, isLoading, get, patch } = useFetch();
-  const [reviewedUser, setReviewedUser] = useState();
+  const [reviewedUser, setReviewedUser] = useState("");
 
   const editUser = (id, approved) => {
     patch(`/admin/users/${id}`, { is_approved: approved });
@@ -18,7 +18,7 @@ const DashboardUsers = () => {
   }, [reviewedUser]);
 
   return (
-    <div className="DashboardUsers">
+    <div className="ManageUsers">
       {error && <h4>{error}</h4>}
       {data && <p>Users pending for review : {data.length}</p>}
       {data && (
@@ -64,4 +64,4 @@ const DashboardUsers = () => {
   );
 };
 
-export default DashboardUsers;
+export default ManageUsers;

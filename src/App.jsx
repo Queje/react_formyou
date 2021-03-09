@@ -4,18 +4,18 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
-import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Login from "pages/login/index";
-import Register from "pages/register/index";
-import Profile from "pages/Profile";
-import Navbar from "components/layout/Navbar/index";
-import Footer from "components/layout/Footer";
-import FlashMessage from "components/layout/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
-import Admin from "pages/dashboardAdmin/Admin";
+import Cookies from "js-cookie";
+import Home from "pages/Home";
+import Login from "pages/Login";
+import Register from "pages/Register";
+import Admin from "pages/Admin/Admin";
+import Profile from "pages/Profile";
+import Navbar from "components/layout/Navbar";
+import Footer from "components/layout/Footer";
+import FlashMessage from "components/layout/FlashMessage";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
