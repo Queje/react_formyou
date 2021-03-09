@@ -22,19 +22,34 @@ const Navbar = () => {
           <Link className="nav-link" to="/">
             <h1 className="navbartitle">FormYou</h1>
           </Link>
-        
-        {!currentUser && (
-          <>
-            <Link className="nav-link" to="/login">Login</Link>
-            <Link className="nav-link" to="/register">Register</Link>
-          </>
-        )}
-        {currentUser && (
-          <>
-            <Link className="nav-link" to="/profile">Profile</Link>
-            <button className="nav-link" onClick={logout}>Se déconnecter</button>
-          </>
-        )}
+
+          {!currentUser && (
+            <>
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+              <Link className="nav-link" to="/register">
+                Register
+              </Link>
+            </>
+          )}
+          {currentUser && (
+            <>
+              <Link className="nav-link" to="/profile">
+                Profile
+              </Link>
+              <button className="nav-link" onClick={logout}>
+                Se déconnecter
+              </button>
+            </>
+          )}
+          {currentUser && currentUser.role === "admin" && (
+            <>
+              <Link className="nav-link" to="/admin">
+                Dashboard Admin
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </div>
