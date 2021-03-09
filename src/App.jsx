@@ -1,5 +1,5 @@
-import './style/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/main.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,6 +14,8 @@ import Footer from "components/layout/Footer";
 import FlashMessage from "components/layout/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
+import AdminRoute from "components/AdminRoute";
+import Admin from "pages/dashboardAdmin/Admin";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -67,6 +69,11 @@ const App = () => {
               component={Profile}
               path="/profile"
               exact
+            />
+            <AdminRoute
+              currentUser={currentUser}
+              component={Admin}
+              path="/admin"
             />
           </Switch>
         )}
