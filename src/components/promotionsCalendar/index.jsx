@@ -10,8 +10,9 @@ const PromotionsCalendar = (props) => {
   const myEventsList =[
               {
                 title: "First Session",
-                start: "2021-09-08T08:02:17-05:00",
-                end:   "2021-09-08T18:02:17-05:00",
+                place: 6,
+                start: "2021-03-08",
+                end:   "2021-03-08",
               }];
   return (
     <div>
