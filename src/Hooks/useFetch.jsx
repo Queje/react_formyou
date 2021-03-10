@@ -22,7 +22,7 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
-          setError("Une erreur est survenue");
+          setError("An expected error occurred.");
         }
       })
       .then((response) => {
@@ -50,10 +50,37 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
+          setError("An expected error occurred.");
+        }
+      })
+      .then((response) => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const destroy = (query) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
           setError("Une erreur est survenue");
         }
       })
       .then((response) => {
+        setData(response);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -67,6 +94,7 @@ const useFetch = () => {
     isLoading,
     get,
     patch,
+    destroy,
   };
 };
 export default useFetch;
