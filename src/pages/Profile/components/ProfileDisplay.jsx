@@ -9,7 +9,6 @@ const ProfileDisplay = ( {data} ) => {
       <p>Last name: {data.last_name}</p>
       <p>Email: {data.email}</p>
       <p>Role: {capitalize(data.role)}</p>
-      <p>Approved? {capitalize(data.is_approved ? "true" : "false")}</p>
     </>
   );
 };

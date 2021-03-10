@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import ManageUsers from "./ManageUsers/ManageUsers";
+import ManageAllUsers from "./ManageAllUsers/ManageAllUsers"
 import ManageCourses from "./ManageCourses/ManageCourses";
 import ManagePromotions from "./ManagePromotions/ManagePromotions";
 import "./Admin.scss";
@@ -25,6 +26,11 @@ const Admin = () => {
           currentUser={currentUser}
           component={ManageUsers}
           path="/admin/users"
+        />
+        <AdminRoute
+          currentUser={currentUser}
+          component={ManageAllUsers}
+          path="/admin/allusers"
         />
         <AdminRoute
           currentUser={currentUser}
