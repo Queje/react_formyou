@@ -1,5 +1,5 @@
-import './Style/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./Style/main.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,9 +14,10 @@ import Footer from "Components/Layout/footer";
 import FlashMessage from "Components/Layout/flashMessage.jsx";
 import PrivateRoute from "Components/PrivateRoute";
 import PublicRoute from "Components/PublicRoute";
-import Course from './Pages/Course/course';
+import Course from "./Pages/Course/course";
 import AdminRoute from "Components/AdminRoute";
 import Admin from "Pages/Admin/admin";
+import Session from "Pages/Session/Session";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -72,11 +73,14 @@ const App = () => {
             <PrivateRoute
               currentUser={currentUser}
               component={Course}
-              path="/courses/:id"/>
-            <AdminRoute
-              currentUser={currentUser}
-              component={Admin}
+              path="/courses/:id"
             />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Session}
+              path="/sessions/:id"
+            />
+            <AdminRoute currentUser={currentUser} component={Admin} />
           </Switch>
         )}
         <Footer />

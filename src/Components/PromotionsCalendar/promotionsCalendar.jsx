@@ -4,13 +4,17 @@ import "../../../node_modules/react-big-calendar/lib/sass/styles.scss";
 import React, { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const PromotionsCalendar = ({ promotions, courses }) => {
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const history = useHistory();
   const [sessions, setSessions] = useState([]);
   const localizer = momentLocalizer(moment);
 
   useEffect(() => {
-    let list = [...sessions];
+    let list = [];
     promotions?.forEach((promo) => {
       courses?.forEach((course) => {
         if (promo.course_id === course.id) {
@@ -28,6 +32,14 @@ const PromotionsCalendar = ({ promotions, courses }) => {
     setSessions(list);
   }, [promotions, courses]);
 
+  const handleSelectEvent = (event) => {
+    if (currentUser.role === "teacher") {
+      history.push(`/sessions/${event.id}`);
+    } else {
+      alert(`You subscribe at: ${event.title} ${event.id}`);
+    }
+  };
+
   return sessions && sessions.length > 0 ? (
     <>
       <div className="container">
@@ -42,9 +54,7 @@ const PromotionsCalendar = ({ promotions, courses }) => {
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
-          onSelectEvent={(event) =>
-            alert(`You subscribe at: ${event.title} ${event.id}`)
-          }
+          onSelectEvent={handleSelectEvent}
         />
       </div>
     </>
