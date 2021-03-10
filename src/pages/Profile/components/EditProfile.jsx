@@ -11,16 +11,12 @@ const EditProfile = ( { onSubmit } ) => {
 
   const [firstName, setFirstName] = useState(currentUser.first_name);
   const [lastName, setLastName] = useState(currentUser.last_name);
-  const [email, setEmail] = useState(currentUser.email);
-  const [role, setRole] = useState(currentUser.role);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({
-      firstName,
-      lastName,
-      email,
-      role
+      first_name: firstName,
+      last_name: lastName,
     });
     handleClose();
   };
@@ -56,24 +52,6 @@ const EditProfile = ( { onSubmit } ) => {
                 className="form-control"
                 onChange={(e) => setLastName(e.target.value)}
               />
-            </div>
-            <div className="form-group">
-              <label for="email">Email</label>
-              <input
-                type="text"
-                required
-                value={email}
-                className="form-control"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label for="role">Role</label>
-              <select value= {role} name="role" onChange={(e) => setRole(e.target.value)} >
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="admin">Administrator</option>
-              </select>
             </div>
             <button className="btn btn-primary float-right">Update</button>
           </form>
