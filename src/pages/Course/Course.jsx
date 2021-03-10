@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Promotions from "components/Promotions/Promotions";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 const Course = () => {
@@ -17,7 +17,7 @@ const Course = () => {
       {error && <h4>{error}</h4>}
       {data && (
         <>
-          <h1>{data.title}</h1>
+          <h1>Next promotion of {data.title}'s course</h1>
           <Promotions course={data} />
         </>
       )}

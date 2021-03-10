@@ -1,25 +1,15 @@
-/* eslint-disable no-unused-vars */
-import "./PromotionsCalendar.scss";
-import "../../../node_modules/react-big-calendar/lib/sass/styles.scss";
-import React, { useEffect, useState } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import useFetch from "Hooks/useFetch";
+import { useEffect } from "react";
+import useFetch from "hooks/useFetch";
 import PromotionsCalendar from "components/Promotions/PromotionsCalendar";
 
 const Promotions = ({ course }) => {
-  const { data, error, get } = useFetch();
-  const [promotions, setPromotions] = useState([]);
-  const localizer = momentLocalizer(moment);
+  const { data, get } = useFetch();
 
   const formatPromotions = (promotions) => {
     let promotionsList = [];
     promotions.forEach((promotion) => {
       const infos = {
-        title: [
-          course.title.toUpperCase(),
-          `${promotion.remaining_seats} seats available`,
-        ],
+        title: [course.title.toUpperCase(), promotion.remaining_seats],
         start: promotion.start_date.split("").slice(0, 10).join(""),
         end: promotion.start_date.split("").slice(0, 10).join(""),
         id: promotion.id,

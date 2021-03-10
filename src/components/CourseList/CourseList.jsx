@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CourseCard from "components/CourseCard/CourseCard";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
 
 const CourseList = () => {

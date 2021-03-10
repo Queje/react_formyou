@@ -1,3 +1,5 @@
+@import "style/variables.scss";
+
 .container {
   padding-top: 5vh;
   margin: auto;
@@ -5,4 +7,9 @@
 
 .rbc-calendar {
   height: 100vh !important;
+}
+.rbc-event {
+  background-color: $color-orange !important;
+  text-align: center !important;
+  margin-bottom: 3px !important;
 }
