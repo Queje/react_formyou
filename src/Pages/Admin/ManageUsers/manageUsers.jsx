@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./ManageUsers.scss";
-import useFetch from "hooks/useFetch";
+import "./manageUsers.scss";
+import useFetch from "Hooks/useFetch";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Loading from "Components/Loading";
