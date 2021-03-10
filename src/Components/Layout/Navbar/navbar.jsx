@@ -36,6 +36,13 @@ const Navbar = () => {
             <button className="nav-link" onClick={logout}>Se déconnecter</button>
           </>
         )}
+        {currentUser && currentUser.role === "admin" && (
+            <>
+              <Link className="nav-link" to="/admin">
+                Dashboard Admin
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </div>
