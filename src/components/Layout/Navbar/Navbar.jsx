@@ -1,5 +1,4 @@
 import "./Navbar.scss";
-import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/Authentication/authMiddleware";
@@ -26,10 +25,10 @@ const Navbar = () => {
           {!currentUser && (
             <>
               <Link className="nav-link" to="/login">
-                Login
+                Log in
               </Link>
               <Link className="nav-link" to="/register">
-                Register
+                Sign up
               </Link>
             </>
           )}

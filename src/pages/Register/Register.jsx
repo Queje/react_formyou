@@ -34,7 +34,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      <h1>Sign Up</h1>
+      <h1>Sign up</h1>
       <form onSubmit={register}>
         <input
           type="text"
