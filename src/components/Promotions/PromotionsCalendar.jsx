@@ -15,6 +15,7 @@ const PromotionsCalendar = ({ promotions }) => {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
+        views={["month", "week"]}
         onSelectEvent={(event) =>
           alert(`You subscribe at: ${event.title} ${event.id}`)
         }
