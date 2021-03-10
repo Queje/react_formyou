@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { getPromotions } from "services/PromotionsService";
-import { getCourses } from "services/CoursesService";
-import PromotionsCalendar from "components/PromotionsCalendar/PromotionsCalendar";
+import React, { useEffect } from "react";
+import Promotions from "components/Promotions/Promotions";
+import useFetch from "Hooks/useFetch";
+import { useParams } from "react-router-dom";
 
-const Course = ({ match }) => {
-  const [course, setCourse] = useState();
-  const [promotions, setPromotions] = useState();
-
-  const getCourse = async () => {
-    const courses = await getCourses();
-    const courseToShow = await courses.filter((c) => c.id === parseInt(match.params.id));
-    setCourse(await courseToShow[0]);
-  };
-  const fetchPromotions = async () => {
-    const promotionsData = await getPromotions();
-    const promotionToShow = await promotionsData.filter(
-      (p) => p.course_id === parseInt(match.params.id)
-    );
-    setPromotions(promotionToShow);
-  };
+const Course = () => {
+  const { courseId } = useParams();
+  const { data, error, get } = useFetch();
 
   useEffect(() => {
-    fetchPromotions();
-    getCourse();
+    get(`/courses/${courseId}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("Promotion:", promotions);
-
   return (
-    <div>
-      {course && <h1>{course.title}</h1>}
-      {promotions && (
-        <PromotionsCalendar promotions={promotions} course={course} />
+    <div className="Course">
+      {error && <h4>{error}</h4>}
+      {data && (
+        <>
+          <h1>{data.title}</h1>
+          <Promotions course={data} />
+        </>
       )}
     </div>
   );
