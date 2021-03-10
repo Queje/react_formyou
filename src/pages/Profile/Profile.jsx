@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
+import useFetch from "Hooks/useFetch";
 import EditProfile from "pages/Profile/components/EditProfile";
 import ProfileDisplay from "pages/Profile/components/ProfileDisplay";
 
