@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
 import { Table } from "react-bootstrap";
 
@@ -53,7 +53,8 @@ const ManageAllUsers = () => {
                           Supprimer
                         </button>
                       )}
-                    </td>
+                    </td>{" "}
+                    console.log("handling new");
                   </tr>
                 ))}
               </tbody>

@@ -114,12 +114,40 @@ const useFetch = () => {
       });
   };
 
+  const post = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          setError("Une erreur est survenue");
+        }
+      })
+      .then((response) => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return {
     data,
     error,
     isLoading,
     get,
     patch,
+    post,
     destroy,
     post,
   };
