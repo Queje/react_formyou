@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
+import CourseList from "components/CourseList/CourseList.jsx";
 import LandingPage from "pages/LandingPage/LandingPage";
-import CourseList from "pages/CourseList/CourseList.jsx";
 
 const Home = () => {
 
