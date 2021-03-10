@@ -17,7 +17,7 @@ import PublicRoute from "Components/PublicRoute";
 import Course from "./Pages/Course/course";
 import AdminRoute from "Components/AdminRoute";
 import Admin from "Pages/Admin/admin";
-import Session from "Pages/Session/Session";
+import Promotion from "Pages/Promotion/Promotion";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -77,8 +77,8 @@ const App = () => {
             />
             <PrivateRoute
               currentUser={currentUser}
-              component={Session}
-              path="/sessions/:id"
+              component={Promotion}
+              path="/promotions/:id"
             />
             <AdminRoute currentUser={currentUser} component={Admin} />
           </Switch>

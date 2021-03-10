@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./manageUsers.scss";
-import useFetch from "Hooks/useFetch";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Loading from "Components/Loading";
+import useFetch from "Hooks/useFetch";
 
 const ManageUsers = () => {
   const { data, error, isLoading, get, patch } = useFetch();

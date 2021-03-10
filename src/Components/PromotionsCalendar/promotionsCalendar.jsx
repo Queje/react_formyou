@@ -34,7 +34,7 @@ const PromotionsCalendar = ({ promotions, courses }) => {
 
   const handleSelectEvent = (event) => {
     if (currentUser.role === "teacher") {
-      history.push(`/sessions/${event.id}`);
+      history.push(`/promotions/${event.id}`);
     } else {
       alert(`You subscribe at: ${event.title} ${event.id}`);
     }

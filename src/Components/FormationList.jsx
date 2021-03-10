@@ -1,4 +1,3 @@
-import useFetch from "Hooks/useFetch";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CourseCard from "./CourseCard/courseCard";
