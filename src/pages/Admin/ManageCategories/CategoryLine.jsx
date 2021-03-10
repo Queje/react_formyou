@@ -59,7 +59,11 @@ const CategoryLine = ({ category }) => {
         <td>
           {(!editing && (
             <span className="ml-3">
-              <AiOutlineEdit size={30} onClick={handleClickEdit} />
+              <AiOutlineEdit
+                size={30}
+                onClick={handleClickEdit}
+                style={{ color: "orange" }}
+              />
             </span>
           )) || (
             <span className="ml-3">
@@ -69,7 +73,12 @@ const CategoryLine = ({ category }) => {
         </td>
         <td>
           {" "}
-          <AiOutlineDelete className="ml-3" size={30} onClick={handleDelete} />
+          <AiOutlineDelete
+            className="ml-3"
+            size={30}
+            onClick={handleDelete}
+            style={{ color: "red" }}
+          />
         </td>
       </tr>
     )

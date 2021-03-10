@@ -4,23 +4,29 @@ import useFetch from "Hooks/useFetch";
 import { Table } from "react-bootstrap";
 import CategoryLine from "./CategoryLine";
 import Loading from "components/Loading";
+import NewCategory from "./NewCategory";
 
 const ManageCategories = () => {
   const { data, error, isLoading, get } = useFetch();
+  const [newCategory, setNewCategory] = useState("");
+
+  const handleNewCategory = (categoryTitle) => {
+    console.log("handling new");
+    setNewCategory(categoryTitle);
+  };
 
   useEffect(() => {
     get("/admin/categories");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [newCategory]);
 
   return (
     <div className="ManageCategories">
       {error && <h4>{error}</h4>}
+      <NewCategory handleNewCategory={handleNewCategory} />
       {(isLoading && <Loading />) ||
         (data && (
           <>
-            <h2>Users pending for review : {data.length}</h2>
-
             <Table striped bordered hover>
               <thead>
                 <tr>
