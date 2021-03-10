@@ -61,12 +61,40 @@ const useFetch = () => {
       });
   };
 
+  const destroy = (query) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          setError("Une erreur est survenue");
+        }
+      })
+      .then((response) => {
+        setData(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return {
     data,
     error,
     isLoading,
     get,
     patch,
+    destroy,
   };
 };
 export default useFetch;
