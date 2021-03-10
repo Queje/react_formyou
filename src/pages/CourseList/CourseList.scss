@@ -1,0 +1,9 @@
+.displaysearchbar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.boxeslist {
+    display: -webkit-inline-box!important;
+}
