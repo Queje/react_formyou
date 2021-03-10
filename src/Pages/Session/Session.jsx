@@ -1,3 +1,4 @@
+import Student from "Components/Student/Student";
 import useFetch from "Hooks/useFetch";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -6,6 +7,7 @@ const Session = ({ match }) => {
   const { data, get } = useFetch();
   const currentUser = useSelector((state) => state.auth.currentUser);
   const [students, setStudents] = useState([]);
+
   console.log(Number(match.params.id));
 
   const fetchPromotions = async () => {
@@ -32,14 +34,10 @@ const Session = ({ match }) => {
     <div>
       Session
       <ul>
-        {students.map(({ id, email, first_name, last_name }) => {
-          return (
-            <li key={id}>
-              {first_name} {last_name} <input type="text" />
-              <button>note</button>
-            </li>
-          );
-        })}
+        {students[0] &&
+          students.map((student) => {
+            return <Student key={student.id} student={student} />;
+          })}
       </ul>
     </div>
   );

@@ -9,19 +9,15 @@ const ProfileCalendar = ({ courses }) => {
   const { data, get } = useFetch();
   const currentUser = useSelector((state) => state.auth.currentUser);
 
-  const fetchPromotions = async () => {
-    get(`/promotions?teacher_id=${currentUser.id}`);
-  };
-
   useEffect(() => {
-    fetchPromotions();
+    get(`/promotions?teacher_id=${currentUser.id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       <h2>Calendar : </h2>
-      <PromotionsCalendar courses={courses} promotions={data} />
+      {data && <PromotionsCalendar courses={courses} promotions={data} />}
     </div>
   );
 };

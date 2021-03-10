@@ -15,8 +15,12 @@ const TeacherProfile = (props) => {
 
   return (
     <div>
-      <FormationList courses={data} />
-      <ProfileCalendar courses={data} />
+      {data && (
+        <>
+          <FormationList courses={data} />
+          <ProfileCalendar courses={data} />
+        </>
+      )}
     </div>
   );
 };
