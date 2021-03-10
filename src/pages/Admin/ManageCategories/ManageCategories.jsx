@@ -11,7 +11,6 @@ const ManageCategories = () => {
   const [newCategory, setNewCategory] = useState("");
 
   const handleNewCategory = (categoryTitle) => {
-    console.log("handling new");
     setNewCategory(categoryTitle);
   };
 

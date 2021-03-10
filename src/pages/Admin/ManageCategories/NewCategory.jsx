@@ -21,13 +21,21 @@ const NewCategory = ({ handleNewCategory }) => {
 
   return (
     <div className="NewCategory">
-      <button type="button" onClick={handleClick}>
-        NEW CATEGORY
+      <button
+        type="button"
+        className="btn btn-primary btn-lg m-3 "
+        onClick={handleClick}
+      >
+        CREATE A NEW CATEGORY
       </button>
       {creating && (
         <>
           <input ref={newTitle} />
-          <AiOutlineCheckSquare onClick={handleClick} size={30} />
+          <AiOutlineCheckSquare
+            onClick={handleClick}
+            size={40}
+            style={{ color: "green" }}
+          />
         </>
       )}
     </div>
