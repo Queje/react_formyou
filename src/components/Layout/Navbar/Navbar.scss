@@ -1,15 +1,17 @@
+@import "style/variables.scss";
+
 .navbar {
-    background-color: darkorange;
+  background-color: $color-orange;
 
-    nav {
-        width: max-content;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        vertical-align: middle!important;
-    };
+  nav {
+    width: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    vertical-align: middle !important;
+  }
 
-    .navbartitle {
-        color: antiquewhite;
-    }
+  .navbartitle {
+    color: antiquewhite;
+  }
 }
