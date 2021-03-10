@@ -1,0 +1,22 @@
+.image-jumbotron{
+background-image: url(./../../assets/jumbotron3.jpeg);
+background-size:cover;
+min-height: 700px;
+}
+.image-student{
+ max-height: 450px;
+ max-width: 350px;
+}
+.svg-icons{
+  max-height: 64px;
+  max-width: 64px;
+}
+
+.jumbotron{
+  h1, h2{ 
+    color: white;
+  }
+  button{
+    margin-left: 20px;
+  }
+}

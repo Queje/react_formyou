@@ -1,9 +1,9 @@
-import './style.scss'
+import "./Register.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
-import { fetchToRegister } from "../../stores/authentication/authMiddleware";
+import { fetchToRegister } from "stores/Authentication/authMiddleware";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ const Register = () => {
         last_name: lastName,
         email: email,
         password: password,
-        role: role
+        role: role,
       },
     };
     e.preventDefault();
@@ -36,35 +36,39 @@ const Register = () => {
     <div className="register">
       <h1>Sign Up</h1>
       <form onSubmit={register}>
-      <input
+        <input
           type="text"
-          placeholder="First name"
+          placeholder="first name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-      <input
+        <input
           type="text"
-          placeholder="Last name"
+          placeholder="last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <select value= {role} name="role" onChange={(e) => setRole(e.target.value)} >
+        <select
+          value={role}
+          name="role"
+          onChange={(e) => setRole(e.target.value)}
+        >
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="admin">Administrator</option>

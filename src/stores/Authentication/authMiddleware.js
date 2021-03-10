@@ -1,5 +1,5 @@
 import * as authActions from "./authActions";
-import { displaySuccess, displayError } from "../flashmessages/flashMiddleware";
+import { displaySuccess, displayError } from "../Flashmessages/flashMiddleware";
 
 import Cookies from "js-cookie";
 

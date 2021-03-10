@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import ManageUsers from "./ManageUsers/ManageUsers";
 import ManageCourses from "./ManageCourses/ManageCourses";
 import ManagePromotions from "./ManagePromotions/ManagePromotions";

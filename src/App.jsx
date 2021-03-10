@@ -1,22 +1,22 @@
-import "./style/main.scss";
+import "style/main.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import { fetchCurrentUser } from "stores/Authentication/authMiddleware.js";
+import Cookies from "js-cookie";
+import Home from "pages/Home/Home.jsx";
+import Login from "pages/Login/Login.jsx";
+import Register from "pages/Register/Register.jsx";
+import Profile from "pages/Profile/Profile.jsx";
+import Navbar from "components/Layouts/Navbar/Navbar.jsx";
+import Footer from "components/Layouts/Footer";
+import FlashMessage from "components/Layouts/FlashMessage.jsx";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
-import FlashMessage from "components/layouts/FlashMessage";
-import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Profile from "pages/Profile/Profile";
-import Login from "pages/Login";
-import Register from "pages/Register";
+import Course from "pages/Course/Course";
 import Admin from "pages/Admin/Admin";
-import Navbar from "components/layouts/Navbar";
-import Footer from "components/layouts/Footer";
-
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -71,11 +71,12 @@ const App = () => {
               path="/profile"
               exact
             />
-            <AdminRoute
+            <PrivateRoute
               currentUser={currentUser}
-              component={Admin}
-              path="/admin"
+              component={Course}
+              path="/courses/:id"
             />
+            <AdminRoute currentUser={currentUser} component={Admin} />
           </Switch>
         )}
         <Footer />

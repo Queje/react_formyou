@@ -1,9 +1,9 @@
-import './style.scss'
+import "./Login.scss";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { fetchToLogin } from "stores/authentication/authMiddleware";
+import { fetchToLogin } from "stores/Authentication/authMiddleware";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login" >
+    <div className="login">
       <h1>Login</h1>
       <form onSubmit={login}>
         <input
