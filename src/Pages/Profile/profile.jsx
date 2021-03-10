@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import ProfileDisplay from "Components/ProfileDisplay/ProfileDisplay";
-import FormationList from "Components/FormationList";
+import TeacherProfile from "Components/TeacherProfile/TeacherProfile";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -13,7 +13,7 @@ const Profile = () => {
       </div>
 
       <div className="col-8 TODO --> List of booked training for the given user?"></div>
-      {currentUser.role === "teacher" && <FormationList />}
+      {currentUser.role === "teacher" && <TeacherProfile />}
     </div>
   );
 };
