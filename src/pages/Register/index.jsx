@@ -38,36 +38,36 @@ const Register = () => {
       <form onSubmit={register}>
       <input
           type="text"
-          placeholder="first name"
+          placeholder="First name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       <input
           type="text"
-          placeholder="last name"
+          placeholder="Last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
         <select value= {role} name="role" onChange={(e) => setRole(e.target.value)} >
-          <option value="student">Etudiant</option>
-          <option value="teacher">Professeur</option>
-          <option value="admin">Administrateur</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="admin">Admin</option>
         </select>
         <input id="submit-button" type="submit" value="S'inscrire" />
       </form>

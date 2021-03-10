@@ -14,8 +14,9 @@ import Footer from "Components/Layout/footer";
 import FlashMessage from "Components/Layout/flashMessage.jsx";
 import PrivateRoute from "Components/PrivateRoute";
 import PublicRoute from "Components/PublicRoute";
-import PromotionsCalendar from './Components/PromotionsCalendar/promotionsCalendar.jsx';
 import Course from './Pages/Course/course';
+import AdminRoute from "components/AdminRoute";
+import Admin from "pages/Admin/Admin";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -73,7 +74,10 @@ const App = () => {
             <PrivateRoute
               currentUser={currentUser}
               component={Course}
-              path="/courses/:id"
+              path="/courses/:id"/>
+            <AdminRoute
+              currentUser={currentUser}
+              component={Admin}
             />
           </Switch>
         )}
