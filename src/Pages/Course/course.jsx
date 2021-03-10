@@ -13,8 +13,8 @@ const Course = ({ match }) => {
     setCourse(await courseToShow[0])
   }
   const fetchPromotions = async () => {
-    const promotions = await getPromotions()
-    const promotionToShow = await promotions.filter(p => p.course_id == match.params.id)
+    const promotionsData = await getPromotions()
+    const promotionToShow = await promotionsData.filter(p => p.course_id == match.params.id)
     setPromotions(promotionToShow)
     }
 
