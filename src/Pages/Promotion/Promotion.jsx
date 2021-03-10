@@ -7,6 +7,7 @@ const Promotion = ({ match }) => {
   const { data, get } = useFetch();
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { promotion, course, subscriptions } = data || {};
+  const startdate = promotion?.start_date.split("").slice(0, 10).join("");
 
   useEffect(() => {
     const promotionId = Number(match.params.id);
@@ -19,7 +20,7 @@ const Promotion = ({ match }) => {
       {course && <h2>Cours : {course.title}</h2>}
       {promotion && (
         <>
-          <p>Le : {promotion.start_date}</p>
+          <p>Le : {startdate}</p>
           <p>Class : {promotion.classroom_id}</p>
         </>
       )}
@@ -32,7 +33,7 @@ const Promotion = ({ match }) => {
                 <Student
                   key={sub.id}
                   subscription={sub}
-                  promotion={promotion}
+                  startdate={startdate}
                 />
               </>
             );
