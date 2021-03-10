@@ -25,11 +25,11 @@ const Profile = () => {
 
   return (
     <div className="row my-3">
-      <div className="col-4">
+      <div className="col-4 text-center">
         <ProfileDisplay data={profile} />
         <EditProfile onSubmit={updateProfile} />
       </div>
-      <div className="col-8 TODO --> List of booked training for the given user?">
+      <div className="col-8">
         <h1>🛠 TODO - Fetch la liste des sessions où le user est inscrit 🛠</h1>
       </div>
     </div>
