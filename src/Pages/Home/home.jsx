@@ -1,6 +1,6 @@
 import React from "react";
-import CourseList from './CourseList';
-import LandingPage from "./LandigPage";
+import CourseList from '../CourseList/courseList.jsx';
+import LandingPage from "../LandingPage/landingPage";
 
 const Home = () => {
   return (
