@@ -1,4 +1,4 @@
-.register{
+.login{
   margin-top: 10vh;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,5 @@
     #submit-button{
       margin-top: 5px;
     }
-  }
-  hr{
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-  .already-register{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 }
