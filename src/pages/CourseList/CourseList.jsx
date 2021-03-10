@@ -3,6 +3,7 @@ import CourseCard from "components/CourseCard/CourseCard";
 import SearchBar from "components/Layout/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import { getCategories } from "services/CategoriesService";
+import { getCategoriesCourses } from "services/CategoriesCoursesService";
 import { getCourses } from "services/CoursesService";
 import CheckBoxCategories from "components/Layout/CheckBoxCategories/CheckBoxCategories";
 
@@ -14,7 +15,9 @@ const CourseList = () => {
 
   const getCategoriesInfo = async () => {
     const infos = await getCategories()
+    const infosCourses = await getCategoriesCourses()
     setCategories(infos);
+    console.log(infosCourses)
   }
 
   const fetchCourse = async () => {
