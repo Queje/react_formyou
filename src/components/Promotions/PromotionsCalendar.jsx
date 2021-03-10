@@ -7,6 +7,16 @@ import moment from "moment";
 const PromotionsCalendar = ({ promotions }) => {
   const localizer = momentLocalizer(moment);
 
+  const Event = ({ event }) => {
+    return (
+      <span>
+        <strong>{event.title[0]}</strong>
+        <br />
+        <i>{event.title[1]}</i>
+      </span>
+    );
+  };
+
   return (
     <div className="Calendar">
       <Calendar
@@ -19,6 +29,9 @@ const PromotionsCalendar = ({ promotions }) => {
         onSelectEvent={(event) =>
           alert(`You subscribe at: ${event.title} ${event.id}`)
         }
+        components={{
+          event: Event,
+        }}
       />
     </div>
   );

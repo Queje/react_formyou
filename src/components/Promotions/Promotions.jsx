@@ -16,7 +16,10 @@ const Promotions = ({ course }) => {
     let promotionsList = [];
     promotions.forEach((promotion) => {
       const infos = {
-        title: course.title,
+        title: [
+          course.title.toUpperCase(),
+          `${promotion.remaining_seats} seats available`,
+        ],
         start: promotion.start_date.split("").slice(0, 10).join(""),
         end: promotion.start_date.split("").slice(0, 10).join(""),
         id: promotion.id,
