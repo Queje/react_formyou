@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import useFetch from "Hooks/useFetch";
 import Loading from "components/Loading";
 import { Table } from "react-bootstrap";
 
 const ManageAllUsers = () => {
-  const { data, error, isLoading, get, patch, destroy } = useFetch();
-  const [deleteUser, setDeleteUser] = useState(0)
+  const { data, error, isLoading, get, destroy } = useFetch();
+  const [deleteUser, setDeleteUser] = useState(0);
 
   const userDelete = (id, approved) => {
     destroy(`/admin/users/${id}`, { is_approved: approved });
-    setDeleteUser(deleteUser + 1)
-  }; 
+    setDeleteUser(deleteUser + 1);
+  };
 
   useEffect(() => {
     get("/admin/users");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteUser]);
-
 
   return (
     <div className="ManageUsers">
@@ -45,14 +44,15 @@ const ManageAllUsers = () => {
                     <td>{user.last_name}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
-                    <td >
-                      {user.role === "admin" &&
-                       <p>Admin </p>
-                       ||
-                      <button onClick={() => userDelete(user.id, true) } className="btn btn-danger">
-                        Supprimer
-                      </button>
-                      }
+                    <td>
+                      {(user.role === "admin" && <p>Admin </p>) || (
+                        <button
+                          onClick={() => userDelete(user.id, true)}
+                          className="btn btn-danger"
+                        >
+                          Supprimer
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -62,6 +62,5 @@ const ManageAllUsers = () => {
         ))}
     </div>
   );
-
 };
 export default ManageAllUsers;

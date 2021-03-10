@@ -1,4 +1,4 @@
-import Student from "Components/Student/Student";
+import Student from "components/Student/Student";
 import useFetch from "Hooks/useFetch";
 import React, { useEffect } from "react";
 

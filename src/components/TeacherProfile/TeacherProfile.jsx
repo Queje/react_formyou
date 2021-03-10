@@ -1,5 +1,5 @@
-import FormationList from "Components/FormationList";
-import ProfileCalendar from "Components/ProfileCalendar/ProfileCalendar";
+import FormationList from "components/FormationList";
+import ProfileCalendar from "components/ProfileCalendar/ProfileCalendar";
 import useFetch from "Hooks/useFetch";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
