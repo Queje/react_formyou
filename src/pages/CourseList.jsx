@@ -15,7 +15,7 @@ useEffect(() => fetchCourse(), [])
   return (
     <div>
       <h2>Nos Formations</h2>
-      <div>
+      <div className="container">
         {course && (
           <div className="row">
               {course.map((e) => (

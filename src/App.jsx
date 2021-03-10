@@ -15,8 +15,8 @@ import FlashMessage from "Components/Layout/flashMessage.jsx";
 import PrivateRoute from "Components/PrivateRoute";
 import PublicRoute from "Components/PublicRoute";
 import Course from './Pages/Course/course';
-import AdminRoute from "components/AdminRoute";
-import Admin from "pages/Admin/Admin";
+import AdminRoute from "Components/AdminRoute";
+import Admin from "Pages/Admin/admin";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
