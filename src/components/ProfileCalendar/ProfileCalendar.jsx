@@ -1,4 +1,4 @@
-import PromotionsCalendar from "Components/PromotionsCalendar/promotionsCalendar";
+import PromotionsCalendar from "components/PromotionsCalendar/PromotionsCalendar";
 import useFetch from "Hooks/useFetch";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";

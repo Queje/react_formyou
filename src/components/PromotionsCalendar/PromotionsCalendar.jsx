@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import "./promotionsCalendar.scss";
+import "./PromotionsCalendar.scss";
 import "../../../node_modules/react-big-calendar/lib/sass/styles.scss";
 import React, { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
