@@ -16,6 +16,7 @@ const ManageUsers = () => {
 
   useEffect(() => {
     get("/admin/users?is_reviewed=false");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reviewedUser]);
 
   return (

@@ -11,13 +11,14 @@ const getCurrentDate = (separator = "") => {
   }${separator}${date}`;
 };
 const Student = ({ subscription, startdate }) => {
-  const { data, error, isLoading, get, patch } = useFetch();
+  const { data, get, patch } = useFetch();
   const [assignNote, setAssignNote] = useState("");
-  const { id, email, first_name, last_name } = data || {};
+  const { id, first_name, last_name } = data || {};
   const { note } = subscription;
 
   useEffect(() => {
     get(`/users/${subscription.student_id}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e) => {

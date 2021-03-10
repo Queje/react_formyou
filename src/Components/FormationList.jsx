@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import CourseCard from "./CourseCard/courseCard";
 
 const FormationList = ({ courses }) => {
