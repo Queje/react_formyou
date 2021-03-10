@@ -15,10 +15,10 @@ export const fetchToRegister = (data) => {
         body: JSON.stringify(data),
       });
       if (!response.ok) {
-        console.log("Une erreur est survenue:", response.statusText);
+        console.log("An error occurred:", response.statusText);
         dispatch(authActions.registerFail());
         Cookies.remove("token");
-        dispatch(displayError("Erreur d'enregistrement"));
+        dispatch(displayError("Signup error."));
         return false;
       }
       const token = await response.headers.get("authorization").split(" ")[1];
@@ -26,7 +26,7 @@ export const fetchToRegister = (data) => {
       const userToRegister = { token, user };
       dispatch(authActions.registerSuccess(userToRegister));
       Cookies.set("token", token);
-      dispatch(displaySuccess("Inscription réussie"));
+      dispatch(displaySuccess("Signup successful!"));
       return true;
     } catch (error) {
       console.log(error);
@@ -46,10 +46,10 @@ export const fetchToLogin = (data) => {
         body: JSON.stringify(data),
       });
       if (!response.ok) {
-        console.log("Une erreur est survenue:", response.statusText);
+        console.log("An error occurred:", response.statusText);
         dispatch(authActions.loginFail());
         Cookies.remove("token");
-        dispatch(displayError("Aucun utilisateur correspondant"));
+        dispatch(displayError("The user hasn't been found."));
         return false;
       }
       const token = await response.headers.get("authorization").split(" ")[1];
@@ -57,7 +57,7 @@ export const fetchToLogin = (data) => {
       const userToLog = { token, user };
       dispatch(authActions.loginSuccess(userToLog));
       Cookies.set("token", token);
-      dispatch(displaySuccess("Connexion réussie"));
+      dispatch(displaySuccess("Login successful!"));
       return true;
     } catch (error) {
       console.log(error);
@@ -106,13 +106,13 @@ export const fetchToLogout = (token) => {
       }
       dispatch(authActions.logoutSuccess());
       Cookies.remove("token");
-      dispatch(displaySuccess("Déconnexion réussie"));
+      dispatch(displaySuccess("Logout successful!"));
     } catch (error) {
       console.log(error);
       dispatch(authActions.logoutFail());
       dispatch(
         displayError(
-          "Un problème est survenu, merci de réessayer ultérieurement"
+          "An expected error occurred."
         )
       );
       return false;
