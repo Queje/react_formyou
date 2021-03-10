@@ -25,7 +25,7 @@ const PromotionsCalendar = ({ promotions, course }) => {
       setSessions(list);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [sessions]);
 
   return sessions && sessions.length > 0 ? (
     <>
