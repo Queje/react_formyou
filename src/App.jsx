@@ -1,22 +1,21 @@
-import './Style/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/main.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "Stores/Authentication/authMiddleware.js";
+import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import PrivateRoute from "components/PrivateRoute";
+import PublicRoute from "components/PublicRoute";
+import AdminRoute from "components/AdminRoute";
 import Cookies from "js-cookie";
-import Home from "Pages/Home/home.jsx";
-import Login from "Pages/Login/login.jsx";
-import Register from "Pages/Register/register.jsx";
-import Profile from "Pages/Profile/profile.jsx";
-import Navbar from "Components/Layout/Navbar/navbar.jsx";
-import Footer from "Components/Layout/footer";
-import FlashMessage from "Components/Layout/flashMessage.jsx";
-import PrivateRoute from "Components/PrivateRoute";
-import PublicRoute from "Components/PublicRoute";
-import Course from './Pages/Course/course';
-import AdminRoute from "Components/AdminRoute";
-import Admin from "Pages/Admin/admin";
+import Home from "pages/Home";
+import Login from "pages/Login";
+import Register from "pages/Register";
+import Admin from "pages/Admin/Admin";
+import Profile from "pages/Profile/Profile";
+import Navbar from "components/layout/Navbar";
+import Footer from "components/layout/Footer";
+import FlashMessage from "components/layout/FlashMessage";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -71,13 +70,10 @@ const App = () => {
               path="/profile"
               exact
             />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Course}
-              path="/courses/:id"/>
             <AdminRoute
               currentUser={currentUser}
               component={Admin}
+              path="/admin"
             />
           </Switch>
         )}

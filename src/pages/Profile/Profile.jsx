@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import ProfileDisplay from "Components/ProfileDisplay/ProfileDisplay";
+import ProfileDisplay from "components/ProfileDisplay/ProfileDisplay";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
