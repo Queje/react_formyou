@@ -2,7 +2,6 @@ import "./Navbar.scss";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { fetchToLogout } from "stores/Authentication/authMiddleware";
 
 const Navbar = () => {
