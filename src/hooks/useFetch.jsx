@@ -22,7 +22,7 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
-          setError("Une erreur est survenue");
+          setError("An expected error occurred.");
         }
       })
       .then((response) => {
@@ -50,7 +50,7 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
-          setError("Une erreur est survenue");
+          setError("An expected error occurred.");
         }
       })
       .then((response) => {
