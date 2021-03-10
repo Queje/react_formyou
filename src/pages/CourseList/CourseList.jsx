@@ -15,12 +15,10 @@ const CourseList = () => {
   const getCategoriesInfo = async () => {
     const infos = await getCategories()
     setCategories(infos);
-    console.log(infos)
   }
 
   const fetchCourse = async () => {
     const courses = await getCourses();
-    console.log(courses)
     setCourse(courses);
   };
 
@@ -33,7 +31,6 @@ const CourseList = () => {
 
   return (
     <div>
-      <h2>Our Courses:</h2>
       <div className="displaysearchbar">
         <SearchBar getInput={setInput}/>
         {categories && (
