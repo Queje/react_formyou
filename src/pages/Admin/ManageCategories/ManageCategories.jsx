@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./ManageCategories.scss";
 import useFetch from "Hooks/useFetch";
 import { Table } from "react-bootstrap";
 import CategoryLine from "./CategoryLine";
 import Loading from "components/Loading";
+
 const ManageCategories = () => {
   const { data, error, isLoading, get } = useFetch();
 
