@@ -1,55 +1,53 @@
-import useFetch from 'hooks/useFetch';
-import React, { useEffect, useState, useRef } from 'react';
+import useFetch from "hooks/useFetch";
+import React, { useEffect, useState, useRef } from "react";
 import {
   AiOutlineDelete,
   AiOutlineEdit,
-  AiOutlineCheckSquare
+  AiOutlineCheckSquare,
 } from "react-icons/ai";
 
 const ClassroomLine = ({ classroom }) => {
   const { data, patch, get, destroy } = useFetch();
-  const [ deleted, setDeleted ]= useState();
+  const [deleted, setDeleted] = useState();
   const newTitle = useRef();
   const [editing, setEditing] = useState();
-  const [title, setNewTitle]= useState(classroom.title);
+  const [title, setNewTitle] = useState(classroom.title);
   const handleClickEdit = () => {
-    if(!editing){
-    setEditing(true);
-    }else {
+    if (!editing) {
+      setEditing(true);
+    } else {
       patch(`/admin/classrooms/${classroom.id}`, {
         title: newTitle.current.value,
-        });
+      });
       setNewTitle(newTitle.current.value);
 
-      setEditing(false)
-  }
-}
-
-
-  const handleDelete = () => {
-    if (window.confirm("Are You Sure ?")){
-      destroy(`/admin/classrooms/${classroom.id}`);
+      setEditing(false);
     }
-    setDeleted(true)
   };
 
-  useEffect(()=>{
-    get(`admin/classrooms/${classroom.id}`)
-  }, [])
+  const handleDelete = () => {
+    if (window.confirm("Are You Sure ?")) {
+      destroy(`/admin/classrooms/${classroom.id}`);
+    }
+    setDeleted(true);
+  };
 
+  useEffect(() => {
+    get(`/admin/classrooms/${classroom.id}`);
+  }, []);
 
   return (
     data &&
     !deleted && (
-    <tr key={data.id}>
-      <td>{data.id}</td>
-      <td>
+      <tr key={data.id}>
+        <td>{data.id}</td>
+        <td>
           {(editing && (
             <input ref={newTitle} placeholder={title} defaultValue={title} />
           )) ||
             title}
         </td>
-      <td>
+        <td>
           {(!editing && (
             <span className="ml-3">
               <AiOutlineEdit
@@ -64,17 +62,17 @@ const ClassroomLine = ({ classroom }) => {
             </span>
           )}
         </td>
-      <td>
-        <AiOutlineDelete
+        <td>
+          <AiOutlineDelete
             className="ml-3"
             size={30}
             onClick={handleDelete}
             style={{ color: "red" }}
           />
         </td>
-    </tr>
+      </tr>
+    )
+  );
+};
 
-  ));
-}
-
-export default ClassroomLine
+export default ClassroomLine;
