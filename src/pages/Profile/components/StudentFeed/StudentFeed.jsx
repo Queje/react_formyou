@@ -8,7 +8,6 @@ const StudentFeed = () => {
 
   useEffect(() => {
     get(`/users/${currentUser.id}/subscriptions`);
-    console.log(courses);
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
