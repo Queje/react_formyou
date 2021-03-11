@@ -2,7 +2,6 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import {
   displaySuccess,
-  displayError,
 } from "stores/Flashmessages/flashMiddleware";
 import { useDispatch } from "react-redux";
 
@@ -28,7 +27,7 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
-          setError("An expected error occurred.");
+          setError("An unexpected error occurred.");
         }
       })
       .then((response) => {
@@ -57,7 +56,7 @@ const useFetch = () => {
           dispatch(displaySuccess("Edit successfull!"));
           return response.json();
         } else {
-          setError("An expected error occurred.");
+          setError("An unexpected error occurred.");
         }
       })
       .then((response) => {

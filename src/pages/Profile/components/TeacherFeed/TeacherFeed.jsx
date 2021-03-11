@@ -1,10 +1,10 @@
-import ProfileCalendar from "pages/Profile/components/TeacherProfile/ProfileCalendar/ProfileCalendar";
+import ProfileCalendar from "pages/Profile/components/TeacherFeed/ProfileCalendar/ProfileCalendar";
 import useFetch from "hooks/useFetch";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import FormationList from "./FormationList";
 
-const TeacherProfile = (props) => {
+const TeacherFeed = () => {
   const { data, get } = useFetch();
   const currentUser = useSelector((state) => state.auth.currentUser);
 
@@ -25,4 +25,4 @@ const TeacherProfile = (props) => {
   );
 };
 
-export default TeacherProfile;
+export default TeacherFeed;

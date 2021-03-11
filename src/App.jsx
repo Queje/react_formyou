@@ -10,7 +10,7 @@ import Login from "pages/Login/Login.jsx";
 import Register from "pages/Register/Register.jsx";
 import Profile from "pages/Profile/Profile.jsx";
 import Navbar from "components/Layout/Navbar/Navbar.jsx";
-import Footer from "components/Layout/Footer";
+import Footer from "components/Layout/Footer/Footer";
 import FlashMessage from "components/Layout/FlashMessage.jsx";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
@@ -37,55 +37,57 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
   return (
-    <section className="App">
-      <Router>
-        <Navbar />
-        {displayFlash && <FlashMessage />}
-        {loadReady && (
-          <Switch>
-            <PublicRoute
-              restricted={false}
-              currentUser={currentUser}
-              component={Home}
-              path="/"
-              exact
-            />
-            <PublicRoute
-              restricted={true}
-              currentUser={currentUser}
-              component={Login}
-              path="/login"
-              exact
-            />
-            <PublicRoute
-              restricted={true}
-              currentUser={currentUser}
-              component={Register}
-              path="/register"
-              exact
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Profile}
-              path="/profile"
-              exact
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Course}
-              path="/courses/:courseId"
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Promotion}
-              path="/promotions/:id"
-            />
-            <AdminRoute currentUser={currentUser} component={Admin} />
-          </Switch>
-        )}
-        <Footer />
-      </Router>
-    </section>
+    <>
+      <main>
+        <Router>
+          <Navbar />
+          {displayFlash && <FlashMessage />}
+          {loadReady && (
+            <Switch>
+              <PublicRoute
+                restricted={false}
+                currentUser={currentUser}
+                component={Home}
+                path="/"
+                exact
+              />
+              <PublicRoute
+                restricted={true}
+                currentUser={currentUser}
+                component={Login}
+                path="/login"
+                exact
+              />
+              <PublicRoute
+                restricted={true}
+                currentUser={currentUser}
+                component={Register}
+                path="/register"
+                exact
+              />
+              <PrivateRoute
+                currentUser={currentUser}
+                component={Profile}
+                path="/profile"
+                exact
+              />
+              <PrivateRoute
+                currentUser={currentUser}
+                component={Course}
+                path="/courses/:courseId"
+              />
+              <PrivateRoute
+                currentUser={currentUser}
+                component={Promotion}
+                path="/promotions/:id"
+              />
+              <AdminRoute currentUser={currentUser} component={Admin} />
+            </Switch>
+          )}
+        </Router>
+      </main>
+      <Footer />
+    </>
   );
 };
 
