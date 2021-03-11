@@ -15,15 +15,16 @@ const StudentFeed = () => {
     <div className="text-center">
       <h4>You are assigned to the following courses:</h4>
       <hr className="my-2" />
-      {courses && courses.map((course) => {
-        return (
-          <p key={course.id}>
-            <span>{course.id}</span>
-          </p>
-        );
-      })}
+      {courses &&
+        courses.map((course) => {
+          return (
+            <p key={course.id}>
+              <span>{course.id}</span>
+            </p>
+          );
+        })}
     </div>
   );
-}
+};
 
 export default StudentFeed;

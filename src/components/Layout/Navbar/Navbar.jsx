@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="navbar static-top py-2">
       <div className="navbar nav-items mr-auto">
-        <Link to="/">
+        <Link className="nav-link" to="/">
           <h2 className="navbartitle">FormYou</h2>
         </Link>
       </div>
