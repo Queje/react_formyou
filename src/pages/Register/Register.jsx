@@ -33,32 +33,32 @@ const Register = () => {
 
   return (
     <div className="register">
-      <h1>Sign Up</h1>
+      <h1>Sign up</h1>
       <form onSubmit={register}>
         <input
           type="text"
-          placeholder="first name"
+          placeholder="First name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
         <input
           type="text"
-          placeholder="last name"
+          placeholder="Last name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
