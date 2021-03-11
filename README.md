@@ -1,4 +1,5 @@
-# React Front website of the From You app
+# Formyou - book a course !
+### React Front website of the From You app
 (check it out at `https://formyou.herokuapp.com/`)
 (use it with the API at `https://api-formyou.herokuapp.com/`)
 
@@ -25,14 +26,6 @@
 * Useanimations
 * Bootstrap
 
-## Usage in Development
-
-Clone this repository  
-Create a .env with `REACT_APP_API_URL="http://localhost:8080"`    
-`yarn install`  
-`yarn start`  
-Your app will be running on `http://localhost:3000`  
-
 ## Usage in Production 
 
 Visit us at `https://formyou.herokuapp.com/
@@ -47,4 +40,14 @@ Visit us at `https://formyou.herokuapp.com/
 
   email: 'teacher@yopmail.com',
   password: 'fakerteacher',
+
+## Usage in Development
+
+Clone this repository  
+Create a .env with `REACT_APP_API_URL="http://localhost:8080"`    
+`yarn install`  
+`yarn start`  
+Your app will be running on `http://localhost:3000`  
+
+
 
