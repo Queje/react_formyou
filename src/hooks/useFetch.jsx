@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import {
   displaySuccess,
+  displayError,
 } from "stores/Flashmessages/flashMiddleware";
 import { useDispatch } from "react-redux";
 
@@ -27,6 +28,7 @@ const useFetch = () => {
         if (response.ok) {
           return response.json();
         } else {
+          dispatch(displayError("Oops, something bad happened! "));
           setError("An unexpected error occurred.");
         }
       })
@@ -53,9 +55,10 @@ const useFetch = () => {
     })
       .then((response) => {
         if (response.ok) {
-          dispatch(displaySuccess("Edit successfull!"));
+          dispatch(displaySuccess("All good!"));
           return response.json();
         } else {
+          dispatch(displayError("Oops, something bad happened! "));
           setError("An unexpected error occurred.");
         }
       })
@@ -80,9 +83,10 @@ const useFetch = () => {
     })
       .then((response) => {
         if (response.ok) {
-          dispatch(displaySuccess("Delete successfull!"));
+          dispatch(displaySuccess("All good!"));
           return response.json();
         } else {
+          dispatch(displayError("Oops, something bad happened! "));
           setError("Une erreur est survenue");
         }
       })
@@ -107,14 +111,16 @@ const useFetch = () => {
       body: JSON.stringify(userData),
     })
       .then((response) => {
-        if (response.ok) {
-          dispatch(displaySuccess("Creation successfull!"));
-          return response.json();
-        } else {
-          setError("Une erreur est survenue");
-        }
+        return response.json();
       })
       .then((response) => {
+        if (response.errors) {
+          dispatch(
+            displayError("Oops, something bad happened! " + response.errors)
+          );
+          return;
+        }
+        dispatch(displaySuccess("All good!"));
         setIsLoading(false);
       })
       .catch((error) => {
