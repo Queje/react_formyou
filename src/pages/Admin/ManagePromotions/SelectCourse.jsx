@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import { Form } from "react-bootstrap";
 
-const SelectCourse = ({ previousCourse, getSelectedCourse }) => {
+const SelectCourse = ({ previousCourse, getSelectedCourse, getNewCourse }) => {
   const { data, get } = useFetch();
-  const [course, setCourse] = useState(previousCourse.id);
-  const [courseName, setCourseName] = useState(previousCourse.title);
+  const [course, setCourse] = useState(
+    previousCourse ? previousCourse.id : "Choose"
+  );
+  const [courseName, setCourseName] = useState(
+    previousCourse ? previousCourse.title : "Choose"
+  );
   const handleChange = (event) => {
     const courseNewTitle =
       event.target.options[event.target.selectedIndex].text;
