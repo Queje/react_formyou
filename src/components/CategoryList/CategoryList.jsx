@@ -38,6 +38,7 @@ const CategoryList = ({handleCategoryFilter}) => {
             <div key={category.category.id} className="boxes">
               <label>
                 <input
+                  className="m-2"
                   name={category.category.title}
                   type="checkbox"
                   value={category.category.id}
