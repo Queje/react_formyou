@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const CourseCard = ({course, editCourse, deleteCourse}) => {
 
   const location = useLocation();
-
-  const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
     <div className="col-6 col-md-4">
