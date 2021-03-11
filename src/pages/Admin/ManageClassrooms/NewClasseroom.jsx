@@ -1,5 +1,6 @@
 import useFetch from 'hooks/useFetch';
 import React, { useRef, useState } from 'react';
+import { AiOutlineCheckSquare } from "react-icons/ai";
 
 const NewClassroom = ({ handleNewClassroom }) => {
   const newTitle = useRef();
@@ -30,7 +31,11 @@ const NewClassroom = ({ handleNewClassroom }) => {
       {creating && (
       <>
         <input ref={newTitle} />
-        <button onClick={handleClick} className="btn btn-primary mb-3" type="submit">Add classroom</button>
+        <AiOutlineCheckSquare
+            onClick={handleClick}
+            size={40}
+            style={{ color: "green" }}
+          />
       </>
       )}
     </div>

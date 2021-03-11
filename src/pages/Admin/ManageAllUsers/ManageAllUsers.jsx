@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
 import { Table } from "react-bootstrap";
+import './ManageAllUsers.scss'
 
 const ManageAllUsers = () => {
   const { data, error, isLoading, get, destroy } = useFetch();
