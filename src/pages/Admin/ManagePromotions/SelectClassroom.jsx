@@ -14,7 +14,7 @@ const SelectClassroom = ({ previousClassroom, getSelectedClassroom }) => {
   useEffect(() => {
     get(`/classrooms`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [classroom]);
 
   return (
     <>

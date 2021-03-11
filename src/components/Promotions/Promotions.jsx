@@ -28,12 +28,14 @@ const Promotions = ({ course }) => {
   return (
     <div className="Promotions">
       {(data && data.length > 0 && (
-        <div className="container">
+        <>
           {(data.length === 1 && <p>{data.length} session found</p>) || (
-            <p>{data.length} sessions found</p>
+            <p className="lead text-center">{data.length} sessions found</p>
           )}
-          <PromotionsCalendar promotions={formatPromotions(data)} />
-        </div>
+          <div className="container">
+            <PromotionsCalendar promotions={formatPromotions(data)} />
+          </div>
+        </>
       )) || <p>No dates for this course yet</p>}
     </div>
   );

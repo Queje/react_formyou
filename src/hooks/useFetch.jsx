@@ -2,7 +2,6 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import {
   displaySuccess,
-  displayError,
 } from "stores/Flashmessages/flashMiddleware";
 import { useDispatch } from "react-redux";
 
