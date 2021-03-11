@@ -80,7 +80,6 @@ const useFetch = () => {
         }
       })
       .then((response) => {
-        setData(response);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -121,8 +120,8 @@ const useFetch = () => {
     isLoading,
     get,
     patch,
-    post,
     destroy,
+    post,
   };
 };
 export default useFetch;
