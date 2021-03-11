@@ -14,7 +14,6 @@ const PromotionsCalendar = ({ promotions }) => {
   const [show, setShow] = useState(false);
   const { data, get, post, error } = useFetch();
   const history = useHistory();
-
   const handleClose = () => setShow(false);
 
   const Event = ({ event }) => {
@@ -35,7 +34,7 @@ const PromotionsCalendar = ({ promotions }) => {
       </span>
     );
   };
-
+  console.log(data);
   const handleClickEvent = (event) => {
     if (currentUser.role === "teacher")
       return history.push(`/promotions/${event.id}`);
@@ -68,14 +67,15 @@ const PromotionsCalendar = ({ promotions }) => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            Course: {data && data.course_title} on{" "}
-            {data && data.clean_start_date}
+            Course: {data && data.promotion.course_title} on{" "}
+            {data && data.promotion.clean_start_date}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            This course will be held in classroom n° {data && data.classroom_id}
-            , your teacher will be {data && data.teacher_name}.
+            This course will be held in classroom n°{" "}
+            {data && data.promotion.classroom_id}, your teacher will be{" "}
+            {data && data.promotion.teacher_name}.
           </p>
           <p>You will receive a confirmation email shortly after signin up</p>
         </Modal.Body>
@@ -85,7 +85,7 @@ const PromotionsCalendar = ({ promotions }) => {
           </Button>
           <Button
             variant="primary"
-            onClick={() => handleSubscriptionCreation(data.id)}
+            onClick={() => handleSubscriptionCreation(data.promotion.id)}
           >
             Confirm my booking
           </Button>
