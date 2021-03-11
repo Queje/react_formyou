@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import './CreateCourse.scss';
 import useFetch from "hooks/useFetch";
+import CoursesCategories from '../CoursesCategories/CoursesCategories.jsx';
 
-const CreateCourse = ( { saveCourse } ) => {
+const CreateCourse = ( { handleNewCourse, setCreate } ) => {
 
-  const { data, get } = useFetch();
+  const { data, get, post } = useFetch();
   const [teacher, setTeacher] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
+
+  const saveCourse = (course) => {
+    post(`/courses`, course);
+    setCreate(false)
+    handleNewCourse(course)
+    console.log("saved course", course)
+  }
+
+  const getCategory = (category) => {
+    setCategory(category)
+  }
+
   
   const format = () => {
     const post = {
       "title": title,
     	"content": content,
-			"teacher_id": teacher
+			"teacher_id": teacher,
+			"category": category
     }
     saveCourse(post)
   }
@@ -30,6 +45,7 @@ const CreateCourse = ( { saveCourse } ) => {
       <div className="input">
         <input type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)} />
         <textarea type="text-area" placeholder="content" onChange={(e) => setContent(e.target.value)} />
+        <CoursesCategories getCategory={getCategory}  />
         <select
           value={teacher}
           name="role"

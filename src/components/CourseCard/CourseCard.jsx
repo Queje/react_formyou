@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import useFetch  from 'hooks/useFetch';
 
-const CourseCard = ({course, editingCourse, deleteCourse}) => {
+const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
 
   const location = useLocation();
+  const { data, get, patch, destroy, post } = useFetch();
+
+  const deleteCourse = (id) => {
+    destroy(`/courses/${id}`);
+    handleDeletedCourse(id)
+  };
 
 
   return (

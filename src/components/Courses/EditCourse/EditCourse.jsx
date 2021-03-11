@@ -2,12 +2,17 @@ import React from 'react';
 import useFetch from 'hooks/useFetch';
 import { useEffect, useState } from 'react';
 
-const EditCourse = ( { course, updateCourse } ) => {
+const EditCourse = ( { course, handleNewCourse } ) => {
   const { title, content, teacher_id  } = course
-  const { data, get } = useFetch();
+  const { data, get, patch } = useFetch();
   const [newTeacher, setNewTeacher] = useState("");
   const [newTitle, setNewTitle] = useState(title);
   const [newContent, setNewContent] = useState(content);
+
+  const updateCourse = (updatedCourse) => {
+    patch(`/courses/${course.id}`, updatedCourse);
+    handleNewCourse(updatedCourse)
+  };
 
 
   const teachers = (data ? data.filter(user => user.role === 'teacher') : "");
