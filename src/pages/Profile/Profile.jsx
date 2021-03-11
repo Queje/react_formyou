@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
 import EditProfile from "pages/Profile/components/EditProfile";
 import ProfileDisplay from "pages/Profile/components/ProfileDisplay";
+import AdminFeed from "pages/Profile/components/AdminFeed/AdminFeed";
+import StudentFeed from "pages/Profile/components/StudentFeed/StudentFeed";
+import StudentCalendar from "pages/Profile/components/StudentFeed/StudentCalendar";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -25,13 +28,39 @@ const Profile = () => {
 
   return (
     <div className="row my-3">
-      <div className="col-4">
+      <div className="col-4 text-center">
         <ProfileDisplay data={profile} />
         <EditProfile onSubmit={updateProfile} />
       </div>
-      <div className="col-8 TODO --> List of booked training for the given user?">
-        <h1>🛠 TODO - Fetch la liste des sessions où le user est inscrit 🛠</h1>
-      </div>
+
+      {currentUser.role === "admin" &&
+        <div className="col-8">
+          <AdminFeed />
+        </div>       
+      }
+      
+      {currentUser.role === "teacher" &&
+        <>
+          <div className="col-8">
+            <h2>Coucou teacher feed WIP Paul</h2>
+          </div>
+          <div className="container text-center">
+            <h2>🛠 Teacher Calendar 🛠</h2>
+          </div>
+        </>
+      }
+
+      {currentUser.role === "student" &&
+        <>
+          <div className="col-8">
+            <StudentFeed />
+          </div>
+          <div className="container text-center">
+            <StudentCalendar/>
+          </div>
+        </>
+      }
+
     </div>
   );
 };
