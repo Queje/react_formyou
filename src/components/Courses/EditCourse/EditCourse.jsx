@@ -41,28 +41,38 @@ const EditCourse = ( { course, handleNewCourse } ) => {
 
   useEffect(() => {get("/admin/users");}, []);
 
-
-
   return ( course &&
     <div className="container" >
       <h3>Editing Course</h3>
-      <div className="input">
-        <input type="text"  placeholder={title} onChange={(e) => setNewTitle(e.target.value)} />
-        <textarea type="text-area"  placeholder={content} onChange={(e) => setNewContent(e.target.value)} />
-        <CoursesCategories getCategory={getCategory}  />
-        <select
-          value={title}
-          placeholder={`${teacher.first_name} ${teacher.last_name}`}
-          name="role"
-          onChange={(e) => setNewTeacher(e.target.value)}
-        >
-          {teachers && teachers.length > 0 && 
-            teachers.map(teacher =>  
-              <option key={teacher.id} value={teacher.id}>{teacher.first_name} {teacher.last_name}</option>
-          )}
-        </select>
+      <div className="form">
+        <label>
+          Title:<br></br>
+          <input type="text"  placeholder={title} onChange={(e) => setNewTitle(e.target.value)} />
+        </label>
+        <label>
+          Content:
+          <textarea type="text-area"  placeholder={content} onChange={(e) => setNewContent(e.target.value)} />
+        </label>
+        <label>
+          Categories:
+          <CoursesCategories getCategory={getCategory}  />
+        </label>
+        <label>
+          Teacher:
+          <select
+            value={title}
+            placeholder={`${teacher.first_name} ${teacher.last_name}`}
+            name="role"
+            onChange={(e) => setNewTeacher(e.target.value)}
+          >
+            {teachers && teachers.length > 0 && 
+              teachers.map(teacher =>  
+                <option key={teacher.id} value={teacher.id}>{teacher.first_name} {teacher.last_name}</option>
+            )}
+          </select>
+        </label>
       </div>
-      <button type="button" onClick={format}  >Post</button>
+      <button className="custom-button" type="button" onClick={format} >Edit</button>
     </div>
   )
 };
