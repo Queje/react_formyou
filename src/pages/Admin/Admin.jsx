@@ -8,7 +8,7 @@ import "./Admin.scss";
 import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ManageClassrooms from "./ManageClassrooms";
+import ManageClassrooms from "./ManageClassrooms/ManageClassrooms";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
