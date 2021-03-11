@@ -1,5 +1,4 @@
 import "./Navbar.scss";
-import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/Authentication/authMiddleware";
@@ -15,44 +14,45 @@ const Navbar = () => {
     dispatch(fetchToLogout(token));
     history.push("/");
   };
-  return (
-    <div className="navbar navbar-expand-lg">
-      <nav>
-        <div className="navbar-nav d-lg-flex align-items-center">
-          <Link className="nav-link" to="/">
-            <h1 className="navbartitle">FormYou</h1>
-          </Link>
 
-          {!currentUser && (
-            <>
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-              <Link className="nav-link" to="/register">
-                Register
-              </Link>
-            </>
-          )}
-          {currentUser && (
-            <>
-              <Link className="nav-link" to="/profile">
-                Profile
-              </Link>
-              <button className="nav-link" onClick={logout}>
-                Se déconnecter
-              </button>
-            </>
-          )}
-          {currentUser && currentUser.role === "admin" && (
-            <>
-              <Link className="nav-link" to="/admin">
-                Dashboard Admin
-              </Link>
-            </>
-          )}
-        </div>
-      </nav>
-    </div>
+  return (
+    <nav className="navbar navbar-expand-lg static-top py-2 px-4">
+      <div className="mr-auto">
+        <Link to="/" className="navbar-brand text-white">
+          FormYou
+        </Link>
+      </div>
+
+      {!currentUser && (
+        <>
+          <Link className="nav-link" to="/register">
+            Sign up
+          </Link>
+          <Link className="nav-link btn btn-primary" to="/login">
+            Log in
+          </Link>
+        </>
+      )}
+
+      {currentUser && currentUser.role === "admin" && (
+        <>
+          <Link className="nav-link" to="/admin">
+            Dashboard Admin
+          </Link>
+        </>
+      )}
+
+      {currentUser && (
+        <>
+          <Link className="nav-link" to="/profile">
+            Profile
+          </Link>
+          <button className="nav-link btn btn-danger" onClick={logout}>
+            Log out
+          </button>
+        </>
+      )}
+    </nav>
   );
 };
 

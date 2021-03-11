@@ -15,7 +15,7 @@ const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
-    <div className="Admin">
+    <div className="Admin my-5">
       <Sidebar />
       <Switch>
         <AdminRoute

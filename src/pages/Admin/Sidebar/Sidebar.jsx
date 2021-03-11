@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <div className="Sidebar">
       <NavLink className="nav-link" to="/admin/users">
-        Manage Users
+        Manage Approvals
       </NavLink>
       <NavLink className="nav-link" to="/admin/allusers">
         Manage All Users

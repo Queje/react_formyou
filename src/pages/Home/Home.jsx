@@ -1,11 +1,22 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import CourseList from "components/CourseList/CourseList.jsx";
 import LandingPage from "pages/LandingPage/LandingPage";
 
 const Home = () => {
+
+  const currentUser = useSelector((state) => state.auth.currentUser);
+
+  if (!currentUser) {
+    return (
+      <div className="Home">
+        <LandingPage />
+        <CourseList />
+      </div>
+    );
+  ;}
+
   return (
-    <div className="Home">
-      <LandingPage />
+    <div className="Home container my-3">
       <CourseList />
     </div>
   );
