@@ -1,4 +1,3 @@
-import "./CategoryList"
 import useFetch from "hooks/useFetch";
 import { useEffect, useState } from "react";
 import Loading from "components/Loading";
@@ -39,12 +38,12 @@ const CategoryList = ({handleCategoryFilter}) => {
           {categories.map((category) => (
             <div key={category.category.id} className="boxes">
               <label>
-              {category.category.title}
-              <input
-                name={category.category.title}
-                type="checkbox"
-                value={category.category.id}
-                onChange={handleCheckboxes}/>
+                <input
+                  name={category.category.title}
+                  type="checkbox"
+                  value={category.category.id}
+                  onChange={handleCheckboxes}/>
+                {category.category.title}
               </label>
             </div> 
           ))}

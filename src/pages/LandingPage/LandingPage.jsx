@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 import student from "assets/student.jpeg";
 import education from "assets/education.svg";
@@ -8,24 +8,23 @@ import teacher from "assets/teacher.svg";
 import society from "assets/society.svg";
 import location from "assets/location.svg";
 import money from "assets/money.svg";
+import CourseList from "components/CourseList/CourseList.jsx";
 
 const LandingPage = () => (
   <div>
     <section className="mb-5">
-      <div className="jumbotron image-jumbotron">
+      <div className="jumbotron image-jumbotron text-center">
         <h1 className="display-4">The new standard of education.</h1>
         <hr className="my-4" />
         <h2>No premises, no teachers. It's free, and it's better.</h2>
         <p className="lead">
-          <button type="button" className="btn btn-primary btn-lg mt-5">
-            Our Courses
-          </button>
-          <button type="button" className="btn btn-secondary btn-lg mt-5">
-            Contact us
-          </button>
+          <Link className="btn btn-primary btn-lg mt-5" to="/login">
+            Get started
+          </Link>
         </p>
       </div>
     </section>
+    <CourseList/>
     <section className="mt-5 mb-5 pt-3 pb-3">
       <div className="container">
         <div className="row mb-8 text-center">
