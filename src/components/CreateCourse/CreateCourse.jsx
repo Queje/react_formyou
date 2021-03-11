@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './CreateCourse.scss';
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 
 const CreateCourse = ( { saveCourse } ) => {
 
-  const { data, error, isLoading, get, patch, destroy } = useFetch();
+  const { data, get } = useFetch();
+  const [teacher, setTeacher] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [teacher, setTeacher] = useState("");
   
   const format = () => {
     const post = {
@@ -15,10 +15,9 @@ const CreateCourse = ( { saveCourse } ) => {
     	"content": content,
 			"teacher_id": teacher
     }
-    console.log("post", post)
     saveCourse(post)
   }
-
+  
   const teachers = (data ? data.filter(user => user.role === 'teacher') : "");
 
   useEffect(() => {get("/admin/users");}, []);
@@ -36,7 +35,10 @@ const CreateCourse = ( { saveCourse } ) => {
           name="role"
           onChange={(e) => setTeacher(e.target.value)}
         >
-          {teachers && teachers.length > 0 && teachers.map(teacher =>  <option key={teacher.id} value={teacher.id}>{teacher.first_name} {teacher.last_name}</option>)}
+          {teachers && teachers.length > 0 &&
+            teachers.map(teacher =>  
+              <option key={teacher.id} value={teacher.id}>{teacher.first_name} {teacher.last_name}</option>
+          )}
         </select>
       </div>
       <button type="button" onClick={format} >Post</button>

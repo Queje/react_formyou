@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const CourseCard = ({course, editCourse, deleteCourse}) => {
+const CourseCard = ({course, editingCourse, deleteCourse}) => {
 
   const location = useLocation();
 
-const CourseCard = ({ course }) => {
+
   return (
     <div className="col-6 col-md-4">
       <div className="card">
@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
               <Link to={`/courses/${course.id}`}>See sessions</Link>
           || 
             <>
-              <button onClick={(e) => editCourse(course.id)} type="type" >Update</button>
+              <button onClick={(e) => editingCourse(course.id)} type="type" >Update</button>
               <button onClick={(e) => deleteCourse(course.id)} type="button" >Delete</button>
             </>
           }
