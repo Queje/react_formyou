@@ -1,8 +1,8 @@
-import FormationList from "components/FormationList";
-import ProfileCalendar from "components/ProfileCalendar/ProfileCalendar";
+import ProfileCalendar from "pages/Profile/components/TeacherProfile/ProfileCalendar/ProfileCalendar";
 import useFetch from "hooks/useFetch";
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import FormationList from "./FormationList";
 
 const TeacherProfile = (props) => {
   const { data, get } = useFetch();

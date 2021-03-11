@@ -1,5 +1,5 @@
+import CourseCard from "components/CourseCard/CourseCard";
 import React from "react";
-import CourseCard from "./CourseCard/CourseCard";
 
 const FormationList = ({ courses }) => {
   return (

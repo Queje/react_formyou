@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
 import EditProfile from "pages/Profile/components/EditProfile";
 import ProfileDisplay from "pages/Profile/components/ProfileDisplay";
-import TeacherProfile from "components/TeacherProfile/TeacherProfile";
+import TeacherProfile from "pages/Profile/components/TeacherProfile/TeacherProfile";
 import AdminFeed from "pages/Profile/components/AdminFeed/AdminFeed";
 import StudentFeed from "pages/Profile/components/StudentFeed/StudentFeed";
 import StudentCalendar from "pages/Profile/components/StudentFeed/StudentCalendar";
+import useFetch from "hooks/useFetch";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
