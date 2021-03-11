@@ -1,11 +1,17 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
+import {
+  displaySuccess,
+  displayError,
+} from "stores/Flashmessages/flashMiddleware";
+import { useDispatch } from "react-redux";
 
 const useFetch = () => {
   const API_URL = process.env.REACT_APP_API_URL;
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   const get = (query) => {
     setIsLoading(true);
@@ -48,6 +54,7 @@ const useFetch = () => {
     })
       .then((response) => {
         if (response.ok) {
+          dispatch(displaySuccess("Edit successfull!"));
           return response.json();
         } else {
           setError("An unexpected error occurred.");
@@ -74,6 +81,7 @@ const useFetch = () => {
     })
       .then((response) => {
         if (response.ok) {
+          dispatch(displaySuccess("Delete successfull!"));
           return response.json();
         } else {
           setError("Une erreur est survenue");
@@ -101,6 +109,7 @@ const useFetch = () => {
     })
       .then((response) => {
         if (response.ok) {
+          dispatch(displaySuccess("Creation successfull!"));
           return response.json();
         } else {
           setError("Une erreur est survenue");
