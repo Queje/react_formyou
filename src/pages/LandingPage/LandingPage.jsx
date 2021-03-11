@@ -8,6 +8,7 @@ import teacher from "assets/teacher.svg";
 import society from "assets/society.svg";
 import location from "assets/location.svg";
 import money from "assets/money.svg";
+import CourseList from "components/CourseList/CourseList.jsx";
 
 const LandingPage = () => (
   <div>
@@ -23,6 +24,7 @@ const LandingPage = () => (
         </p>
       </div>
     </section>
+    <CourseList/>
     <section className="mt-5 mb-5 pt-3 pb-3">
       <div className="container">
         <div className="row mb-8 text-center">
