@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const SelectCourse = ({ previousCourse, getSelectedCourse }) => {
   const { data, get } = useFetch();
+  const [course, setCourse] = useState(previousCourse.id);
+  const [courseName, setCourseName] = useState(previousCourse.title);
+  const handleChange = (event) => {
+    const courseNewTitle =
+      event.target.options[event.target.selectedIndex].text;
+    setCourse(event.target.value);
+    setCourseName(courseNewTitle);
+    getSelectedCourse(event.target.value, courseNewTitle);
+  };
 
   useEffect(() => {
     get(`/courses`);
@@ -14,13 +23,19 @@ const SelectCourse = ({ previousCourse, getSelectedCourse }) => {
     <>
       <Form.Control
         as="select"
-        value={previousCourse}
-        onChange={(event) => getSelectedCourse(event.target.value)}
+        value={course}
+        onChange={handleChange}
+        name={courseName}
+        id={courseName}
       >
         {data &&
-          data.map((course) => (
-            <option key={course.id} value={course.id}>
-              {course.title}
+          data.map((courseItem) => (
+            <option
+              key={courseItem.id}
+              value={courseItem.id}
+              name={courseItem.title}
+            >
+              {courseItem.title}
             </option>
           ))}
       </Form.Control>

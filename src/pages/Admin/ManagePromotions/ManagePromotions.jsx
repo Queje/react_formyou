@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./ManagePromotions.scss";
 import useFetch from "hooks/useFetch";
 import { Table } from "react-bootstrap";
@@ -24,7 +24,6 @@ const ManagePromotions = () => {
               <thead>
                 <tr>
                   <th>ID</th>
-
                   <th>Course</th>
                   <th>Start date</th>
                   <th>Classroom n°</th>
