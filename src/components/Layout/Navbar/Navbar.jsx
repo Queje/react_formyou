@@ -14,6 +14,7 @@ const Navbar = () => {
     dispatch(fetchToLogout(token));
     history.push("/");
   };
+
   return (
     <nav className="navbar static-top py-2">
       <div className="navbar nav-items mr-auto">
@@ -33,6 +34,14 @@ const Navbar = () => {
         </>
       )}
 
+      {currentUser && currentUser.role === "admin" && (
+        <>
+          <Link className="nav-link" to="/admin">
+            Dashboard Admin
+          </Link>
+        </>
+      )}
+
       {currentUser && (
         <>
           <Link className="nav-link" to="/profile">
@@ -41,14 +50,6 @@ const Navbar = () => {
           <button className="nav-link btn btn-danger" onClick={logout}>
             Log out
           </button>
-        </>
-      )}
-
-      {currentUser && currentUser.role === "admin" && (
-        <>
-          <Link className="nav-link" to="/admin">
-            Dashboard Admin
-          </Link>
         </>
       )}
     </nav>
