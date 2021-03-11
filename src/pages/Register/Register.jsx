@@ -27,7 +27,6 @@ const Register = () => {
     };
     e.preventDefault();
     if (await dispatch(fetchToRegister(data))) {
-      console.log("it awaited ok");
       history.push("/");
     }
   };
@@ -77,7 +76,7 @@ const Register = () => {
       </form>
       <hr></hr>
       <p>Already have an account?</p>
-      <Link to="/login" >
+      <Link to="/login">
         <span> Log in now!</span>
       </Link>
     </div>

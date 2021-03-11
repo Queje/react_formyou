@@ -36,7 +36,7 @@ const ManagePromotions = () => {
                   <th>Classroom n°</th>
                   <th>Teacher's name</th>
                   <th>Remaining seats</th>
-                  <th colSpan="2">Edit</th>
+                  <th colSpan="2"></th>
                 </tr>
               </thead>
               <tbody>

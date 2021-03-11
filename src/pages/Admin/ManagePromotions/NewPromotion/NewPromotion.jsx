@@ -63,6 +63,15 @@ const NewPromotion = ({ handleNewPromotion }) => {
           {(!creating && "CREATE A NEW PROMOTION") || "CONFIRM CREATION"}
         </button>
       }
+      {creating && (
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={() => setCreating(false)}
+        >
+          CANCEL CREATION
+        </button>
+      )}
     </div>
   );
 };

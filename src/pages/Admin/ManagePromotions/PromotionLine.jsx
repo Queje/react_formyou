@@ -49,7 +49,6 @@ const PromotionLine = ({ promotion }) => {
     }
   };
   const getSelectedCourse = (courseId, courseTitle) => {
-    console.log("receiveing new info", courseId, courseTitle);
     setSelectedCourseId(courseId);
     setSelectedCourseTitle(courseTitle);
   };
@@ -60,7 +59,6 @@ const PromotionLine = ({ promotion }) => {
 
   useEffect(() => {
     get(`/admin/promotions/${promotion.id}`);
-    console.log("reloading");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
