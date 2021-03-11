@@ -5,21 +5,16 @@ import "./ManageCourses.scss";
 import CourseCard from 'components/CourseCard/CourseCard';
 import CreateCourse from '../../../components/Courses/CreateCourse/CreateCourse';
 import EditCourse from '../../../components/Courses/EditCourse/EditCourse';
-import { useHistory } from 'react-router-dom';
+
 const ManageCourses = () => {
 
   const { data, get, patch, destroy, post } = useFetch();
 
   const [creating, setCreating] = useState(false);
-
   const [editing, setEditing] = useState(false);
-
-
   const [course, setCourse] = useState({});
   const [courseAdded, setCourseAdded] = useState("");
   const [courseDeleted, setCourseDeleted] = useState("");
-  const [courseEdited, setCourseEdited] = useState("");
-
 
   const editingCourse = (id) => {
     setEditing(true);
@@ -29,24 +24,15 @@ const ManageCourses = () => {
     console.log("selectedCourse", selectedCourse[0])
   };
 
-
-
-
   const handleNewCourse = (info) => {
     setCourseAdded(info)
     setCreating(false)
   }
 
-  const handleEditedCourse = (info) => {
-    setCourseAdded(info)
-    setEditing(false);
-  }
 
   const handleDeletedCourse = (info) => {
     setCourseDeleted(info)
   }
-
-
 
   useEffect(() => {get("/courses"); }, [courseAdded]);
 

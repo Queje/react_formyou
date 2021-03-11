@@ -1,19 +1,22 @@
 import React from 'react';
 import useFetch from 'hooks/useFetch';
 import { useEffect, useState } from 'react';
+import CoursesCategories from '../CoursesCategories/CoursesCategories';
 
 const EditCourse = ( { course, handleNewCourse } ) => {
-  const { title, content, teacher_id  } = course
+
+  const { title, content, teacher_id, category  } = course
+
   const { data, get, patch } = useFetch();
   const [newTeacher, setNewTeacher] = useState("");
   const [newTitle, setNewTitle] = useState(title);
   const [newContent, setNewContent] = useState(content);
+  const [newCategory, setCategory] = useState(category);
 
   const updateCourse = (updatedCourse) => {
     patch(`/courses/${course.id}`, updatedCourse);
     handleNewCourse(updatedCourse)
   };
-
 
   const teachers = (data ? data.filter(user => user.role === 'teacher') : "");
 
@@ -22,16 +25,23 @@ const EditCourse = ( { course, handleNewCourse } ) => {
     return previousTeacher[0]
   };
 
+  const getCategory = (id) => {
+    setCategory(id)
+  }
+
   const format = () => {
     const post = {
       "title": newTitle,
     	"content": newContent,
-			"teacher_id": newTeacher
+			"teacher_id": newTeacher,
+      "category_id": newTeacher
     }
     updateCourse(post)
   }
 
   useEffect(() => {get("/admin/users");}, []);
+
+  console.log("category !!!!!", category)
 
   return ( course &&
     <div className="container" >
@@ -39,6 +49,7 @@ const EditCourse = ( { course, handleNewCourse } ) => {
       <div className="input">
         <input type="text"  placeholder={title} onChange={(e) => setNewTitle(e.target.value)} />
         <textarea type="text-area"  placeholder={content} onChange={(e) => setNewContent(e.target.value)} />
+        <CoursesCategories getCategory={getCategory} previousCategory={newCategory}  />
         <select
           value={title}
           placeholder={`${teacher.first_name} ${teacher.last_name}`}

@@ -1,41 +1,46 @@
 import React, {useState, useEffect} from 'react';
 import useFetch from "hooks/useFetch";
-import MultiSelect from "react-multi-select-component";
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
 
-const CoursesCategories = ({ getCategory }) => {
+const CoursesCategories = ({ getCategory, previousCategory }) => {
+
   const { data, get } = useFetch();
-  const [selected, setSelected] = useState([]);
+  const [category, setCategory] = useState();
+  const animatedComponents = makeAnimated();
+
+  const handleChange = (value) => {
+    let list = [];
+    value.forEach(category => {
+      list.push(category.value)
+    })
+    setCategory(list);
+    getCategory(list);
+  };
 
   const options = () => {
-    let list = []
-    data.forEach(category =>{
-      const option ={
-        label: category.title,
-        value: category.title
-      }
-      list.push(option)
-    })
-    return list
+    if(data){
+      let list = [];
+      data.forEach(category => {
+        const info = {value: category.id, label: category.title};
+        list.push(info)
+      })
+      return list
+    }
   }
-
 
   useEffect(() => {get("/categories");}, []);
 
-
-  console.log("data categories", data)
-
   return (
-    <div>
-      <h1>Select Categories</h1>
-      <pre>{JSON.stringify(selected)}</pre>
-      <MultiSelect
-        options={options()}
-        value={selected}
-        onChange={setSelected}
-        labelledBy={"Select"}
-      />
-    </div>
+    <Select
+      closeMenuOnSelect={false}
+      components={animatedComponents}
+      onChange={handleChange}
+      isMulti
+      options={options()}
+    />
   )
 };
 
 export default CoursesCategories;
+

@@ -3,42 +3,39 @@ import './CreateCourse.scss';
 import useFetch from "hooks/useFetch";
 import CoursesCategories from '../CoursesCategories/CoursesCategories.jsx';
 
-const CreateCourse = ( { handleNewCourse, setCreate } ) => {
+const CreateCourse = ( { handleNewCourse } ) => {
 
   const { data, get, post } = useFetch();
   const [teacher, setTeacher] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
+  
+  const teachers = (data ? data.filter(user => user.role === 'teacher') : "");
 
   const saveCourse = (course) => {
-    post(`/courses`, course);
-    setCreate(false)
+    post(`/admin/courses`, course);
     handleNewCourse(course)
     console.log("saved course", course)
   }
 
-  const getCategory = (category) => {
-    setCategory(category)
+  const getCategory = (id) => {
+    setCategory(id)
   }
 
-  
   const format = () => {
     const post = {
       "title": title,
     	"content": content,
 			"teacher_id": teacher,
-			"category": category
+			"category_ids": category
     }
     saveCourse(post)
   }
   
-  const teachers = (data ? data.filter(user => user.role === 'teacher') : "");
 
   useEffect(() => {get("/admin/users");}, []);
 
-  console.log("Users:", teachers)
-  
   return (
     <div className="container" >
       <h3>Create your new course</h3>
