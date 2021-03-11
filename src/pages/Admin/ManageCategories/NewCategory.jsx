@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 
 const NewCategory = ({ handleNewCategory }) => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./ManageCategories.scss";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import { Table } from "react-bootstrap";
 import CategoryLine from "./CategoryLine";
 import Loading from "components/Loading";

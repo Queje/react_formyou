@@ -53,8 +53,7 @@ const ManageAllUsers = () => {
                           Supprimer
                         </button>
                       )}
-                    </td>{" "}
-                    console.log("handling new");
+                    </td>
                   </tr>
                 ))}
               </tbody>

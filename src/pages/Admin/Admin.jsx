@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
-import ManageUsers from "./ManageUsers/ManageUsers";
+import ManageApproval from "./ManageApproval/ManageApproval";
 import ManageAllUsers from "./ManageAllUsers/ManageAllUsers";
 import ManageCourses from "./ManageCourses/ManageCourses";
 import ManagePromotions from "./ManagePromotions/ManagePromotions";
@@ -19,13 +19,13 @@ const Admin = () => {
       <Switch>
         <AdminRoute
           currentUser={currentUser}
-          component={ManageUsers}
+          component={ManageApproval}
           path="/admin"
           exact
         />
         <AdminRoute
           currentUser={currentUser}
-          component={ManageUsers}
+          component={ManageApproval}
           path="/admin/users"
         />
         <AdminRoute

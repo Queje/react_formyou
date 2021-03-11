@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import "./ManageCategories.scss";
 import { Link } from "react-router-dom";
 import {
