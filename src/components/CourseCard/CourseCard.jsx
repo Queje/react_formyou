@@ -5,6 +5,7 @@ const CourseCard = ({course, editCourse, deleteCourse}) => {
 
   const location = useLocation();
 
+const CourseCard = ({ course }) => {
   return (
     <div className="col-6 col-md-4">
       <div className="card">
@@ -22,7 +23,7 @@ const CourseCard = ({course, editCourse, deleteCourse}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;
