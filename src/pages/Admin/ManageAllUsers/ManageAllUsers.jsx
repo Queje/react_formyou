@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
 import { Table } from "react-bootstrap";
 
 const ManageAllUsers = () => {
-  const { data, error, isLoading, get, destroy } = useFetch();
+  const { data, error, isLoading, get, patch, destroy } = useFetch();
   const [deleteUser, setDeleteUser] = useState(0);
 
   const userDelete = (id, approved) => {

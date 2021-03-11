@@ -73,7 +73,7 @@ const App = () => {
             <PrivateRoute
               currentUser={currentUser}
               component={Course}
-              path="/courses/:id"
+              path="/courses/:courseId"
             />
             <PrivateRoute
               currentUser={currentUser}

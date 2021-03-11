@@ -1,6 +1,6 @@
-import Student from "components/Student/Student";
-import useFetch from "Hooks/useFetch";
+import useFetch from "hooks/useFetch";
 import React, { useEffect } from "react";
+import Student from "./componants/Student/Student";
 
 const Promotion = ({ match }) => {
   const { data, get } = useFetch();
@@ -12,7 +12,6 @@ const Promotion = ({ match }) => {
     get(`/promotions/${promotionId}?subscription=true`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className="container">
       {course && <h2>Cours : {course.title}</h2>}
@@ -30,7 +29,8 @@ const Promotion = ({ match }) => {
               <>
                 <Student
                   key={sub.id}
-                  subscription={sub}
+                  subscription={sub.subscription}
+                  student={sub.student}
                   startdate={startdate}
                 />
               </>
