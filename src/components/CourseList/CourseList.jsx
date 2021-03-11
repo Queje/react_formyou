@@ -1,48 +1,42 @@
 import "./CourseList.scss";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CourseCard from "components/CourseCard/CourseCard";
 import SearchBar from "components/Layout/SearchBar/SearchBar";
-import CheckBoxCategories from "components/Layout/CheckBoxCategories/CheckBoxCategories";
 import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
+import CategoryList from "components/CategoryList/CategoryList";
 
 const CourseList = () => {
   const { data, error, isLoading, get } = useFetch();
   const [course, setCourse] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [input, setInput] = useState("");
-  const [checkBoxInput, setCheckBoxInput] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
 
-  const fetchCourse = async () => {
-    get("/courses");
-    const courses = await data;
-    setCourse(courses);
-  };
-
-  const getCategoriesInfo = async () => {
-    get ("/categories");
-    const infos = await data;
-    setCategories(infos);
+  const handleCategoryFilter = (list) => {
+    setCategoryList(list)
   }
 
   useEffect(() => {
-    getCategoriesInfo()
-    fetchCourse()
-  }, []);
+    if (categoryList.length < 1){
+      get("/courses");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    } else {
+      const categories = categoryList.join()
+      get(`/courses?categories=${categories}`)
+    }
+  }, [categoryList]);
 
-  console.log(checkBoxInput)
+  useEffect(() => {
+    setCourse(data);
+  }, [data])
 
+  console.log(categoryList.join())
+  
   return (
     <div className="CourseList">
       <div className="displaysearchbar">
         <SearchBar getInput={setInput}/>
-        {categories && (
-          <form className="boxeslist">
-            {categories.map((category) => (
-              <CheckBoxCategories key={category.id} category={category} setCheckBoxInput={setCheckBoxInput}/>
-            ))}
-          </form>
-        )}
+        <CategoryList handleCategoryFilter={handleCategoryFilter}/>
       </div>
       {error && <h4>{error}</h4>}
       {(isLoading && <Loading />) ||
