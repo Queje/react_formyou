@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Loading from "components/Loading";
 import { Table } from "react-bootstrap";
 import "./ManageClassrooms.scss";
+import NewClassroom from './NewClasseroom'
+import ClassroomLine from './ClassroomLine'
+
 
 const ManageClassrooms = () => {
  
@@ -10,15 +13,14 @@ const ManageClassrooms = () => {
   const [newClassroom, setNewClassroom]= useState("");
   const [deleteClassroom, setDeleteClassroom]= useState(0);
 
+  const handleNewClassroom = (classroomTitle) =>{
+    setNewClassroom(classroomTitle)
+  }
+
 const createClassroom = (userData,e) => {
   e.preventDefault();
   post(`/classrooms`, {"classroom":{"title": userData}});
   setNewClassroom(newClassroom);
-};
-
-const classroomDelete = (id, approved) => {
-  destroy(`/classrooms/${id}`, { is_approved: approved });
-  setDeleteClassroom(deleteClassroom + 1);
 };
 
 useEffect (() => {
@@ -27,16 +29,14 @@ useEffect (() => {
 
 useEffect (() => {
   get('/classrooms');
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [newClassroom]);
 
   return (
     <div className="ManageClassrooms">
-      <form onSubmit={(e)=>createClassroom(newClassroom, e)}>
-        <input placeholder="Classroom"onChange={(e) =>setNewClassroom(e.target.value)}></input>
-        <button className="btn btn-primary mb-3" type="submit">Add classroom</button>
-      </form>
     <div>
       {error && <h4>{error}</h4>}
+      <NewClassroom handleNewClassroom={handleNewClassroom} />
       {(isLoading && <Loading />) ||
         (data && (
         <div>
@@ -46,21 +46,13 @@ useEffect (() => {
               <tr>
                 <th>ID</th>
                 <th>Title of classroom</th>
+                <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               {data.map((classroom) =>(
-                <tr>
-                  <th>{classroom.id}</th>
-                  <th>{classroom.title}</th>
-                  <th>
-                    <button 
-                      onClick={() => classroomDelete(classroom.id, true)}
-                      className="btn btn-danger"> Delete
-                    </button>
-                  </th>
-                </tr>
+                  <ClassroomLine classroom={classroom} />
                 ))}
               </tbody>
             </Table>

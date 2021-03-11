@@ -19,6 +19,9 @@ const Sidebar = () => {
       </NavLink>
       <NavLink className="nav-link" to="/admin/classrooms">
         Manage Classrooms
+        </NavLink>
+      <NavLink className="nav-link" to="/admin/categories">
+        Manage Categories
       </NavLink>
     </div>
   );

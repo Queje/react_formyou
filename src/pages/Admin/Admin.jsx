@@ -1,9 +1,10 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
-import ManageUsers from "./ManageUsers/ManageUsers";
-import ManageAllUsers from "./ManageAllUsers/ManageAllUsers"
+import ManageApproval from "./ManageApproval/ManageApproval";
+import ManageAllUsers from "./ManageAllUsers/ManageAllUsers";
 import ManageCourses from "./ManageCourses/ManageCourses";
 import ManagePromotions from "./ManagePromotions/ManagePromotions";
+import ManageCategories from "./ManageCategories/ManageCategories";
 import "./Admin.scss";
 import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
@@ -19,13 +20,13 @@ const Admin = () => {
       <Switch>
         <AdminRoute
           currentUser={currentUser}
-          component={ManageUsers}
+          component={ManageApproval}
           path="/admin"
           exact
         />
         <AdminRoute
           currentUser={currentUser}
-          component={ManageUsers}
+          component={ManageApproval}
           path="/admin/users"
         />
         <AdminRoute
@@ -47,6 +48,11 @@ const Admin = () => {
           currentUser={currentUser}
           component={ManageClassrooms}
           path="/admin/classrooms"
+          />
+          <AdminRoute
+          currentUser={currentUser}
+          component={ManageCategories}
+          path="/admin/categories"
         />
       </Switch>
     </div>
