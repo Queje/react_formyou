@@ -15,43 +15,43 @@ const Navbar = () => {
     history.push("/");
   };
   return (
-    <div className="navbar navbar-expand-lg">
-      <nav>
-        <div className="navbar-nav d-lg-flex align-items-center">
-          <Link className="nav-link" to="/">
-            <h1 className="navbartitle">FormYou</h1>
-          </Link>
+    <nav className="navbar static-top py-2">
+      <div className="navbar nav-items mr-auto">
+        <Link to="/">
+          <h2 className="navbartitle">FormYou</h2>
+        </Link>
+      </div>
 
-          {!currentUser && (
-            <>
-              <Link className="nav-link" to="/login">
-                Log in
-              </Link>
-              <Link className="nav-link" to="/register">
-                Sign up
-              </Link>
-            </>
-          )}
-          {currentUser && (
-            <>
-              <Link className="nav-link" to="/profile">
-                Profile
-              </Link>
-              <button className="nav-link" onClick={logout}>
-                Se déconnecter
-              </button>
-            </>
-          )}
-          {currentUser && currentUser.role === "admin" && (
-            <>
-              <Link className="nav-link" to="/admin">
-                Dashboard Admin
-              </Link>
-            </>
-          )}
-        </div>
-      </nav>
-    </div>
+      {!currentUser && (
+        <>
+          <Link className="nav-link mr-3" to="/register">
+            Sign up
+          </Link>
+          <Link className="nav-link btn btn-primary" to="/login">
+            Log in
+          </Link>
+        </>
+      )}
+
+      {currentUser && (
+        <>
+          <Link className="nav-link" to="/profile">
+            Profile
+          </Link>
+          <button className="nav-link btn btn-danger" onClick={logout}>
+            Log out
+          </button>
+        </>
+      )}
+
+      {currentUser && currentUser.role === "admin" && (
+        <>
+          <Link className="nav-link" to="/admin">
+            Dashboard Admin
+          </Link>
+        </>
+      )}
+    </nav>
   );
 };
 
