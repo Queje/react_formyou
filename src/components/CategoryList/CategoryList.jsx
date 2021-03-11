@@ -9,7 +9,6 @@ const CategoryList = ({handleCategoryFilter}) => {
 
 
   const handleCheckboxes =(e) => {
-    console.log(categories.map((category)=> category.courses))
     if (e.target.checked){
       setListToFilter([...listToFilter, e.target.value])
       handleCategoryFilter([...listToFilter, e.target.value])
