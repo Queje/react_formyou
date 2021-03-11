@@ -34,7 +34,6 @@ const PromotionsCalendar = ({ promotions }) => {
       </span>
     );
   };
-  console.log(data);
   const handleClickEvent = (event) => {
     if (currentUser.role === "teacher")
       return history.push(`/promotions/${event.id}`);
