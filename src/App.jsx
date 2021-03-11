@@ -17,6 +17,7 @@ import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
 import Course from "pages/Course/Course";
 import Admin from "pages/Admin/Admin";
+import Promotion from "pages/Promotion/Promotion";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -31,12 +32,10 @@ const App = () => {
     }
     setLoadReady(true);
   };
-
   useEffect(() => {
     autoLogin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
-
   return (
     <section className="App">
       <Router>
@@ -75,6 +74,11 @@ const App = () => {
               currentUser={currentUser}
               component={Course}
               path="/courses/:courseId"
+            />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Promotion}
+              path="/promotions/:id"
             />
             <AdminRoute currentUser={currentUser} component={Admin} />
           </Switch>

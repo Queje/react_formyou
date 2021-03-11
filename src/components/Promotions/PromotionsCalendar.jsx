@@ -6,13 +6,14 @@ import moment from "moment";
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
+import { useHistory } from "react-router-dom";
 
 const PromotionsCalendar = ({ promotions }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const localizer = momentLocalizer(moment);
   const [show, setShow] = useState(false);
   const { data, get, post, error } = useFetch();
-
+  const history = useHistory();
   const handleClose = () => setShow(false);
 
   const Event = ({ event }) => {
@@ -25,7 +26,7 @@ const PromotionsCalendar = ({ promotions }) => {
             <i>{event.title[1]} seats available</i>
             <br />
             <Button variant="primary" className="btn btn-secondary">
-              BOOK
+              {currentUser.role === "teacher" ? "SEE" : "BOOK"}
             </Button>
           </>
         )}
@@ -33,8 +34,9 @@ const PromotionsCalendar = ({ promotions }) => {
       </span>
     );
   };
-
-  const handleClickBook = (event) => {
+  const handleClickEvent = (event) => {
+    if (currentUser.role === "teacher")
+      return history.push(`/promotions/${event.id}`);
     get(`/promotions/${event.id}`);
     setShow(true);
   };
@@ -55,7 +57,7 @@ const PromotionsCalendar = ({ promotions }) => {
         endAccessor="end"
         style={{ height: 500 }}
         views={["month", "week"]}
-        onSelectEvent={(event) => handleClickBook(event)}
+        onSelectEvent={(event) => handleClickEvent(event)}
         components={{
           event: Event,
         }}
@@ -64,14 +66,15 @@ const PromotionsCalendar = ({ promotions }) => {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            Course: {data && data.course_title} on{" "}
-            {data && data.clean_start_date}
+            Course: {data && data.promotion.course_title} on{" "}
+            {data && data.promotion.clean_start_date}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            This course will be held in classroom n° {data && data.classroom_id}
-            , your teacher will be {data && data.teacher_name}.
+            This course will be held in classroom n°{" "}
+            {data && data.promotion.classroom_id}, your teacher will be{" "}
+            {data && data.promotion.teacher_name}.
           </p>
           <p>You will receive a confirmation email shortly after signin up</p>
         </Modal.Body>
@@ -81,7 +84,7 @@ const PromotionsCalendar = ({ promotions }) => {
           </Button>
           <Button
             variant="primary"
-            onClick={() => handleSubscriptionCreation(data.id)}
+            onClick={() => handleSubscriptionCreation(data.promotion.id)}
           >
             Confirm my booking
           </Button>
