@@ -1,8 +1,7 @@
 import "./Login.scss";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import { fetchToLogin } from "stores/Authentication/authMiddleware";
 
 const Login = () => {
@@ -27,24 +26,29 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1>Login</h1>
+      <h1>Log in</h1>
       <form onSubmit={login}>
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <input id="submit-button" type="submit" value="Envoyer" />
+        <input id="submit-button" type="submit" value="Log in" />
       </form>
+      <hr></hr>
+      <p>Don't have an account yet?</p>
+      <Link to="/register" >
+        <span> Register now!</span>
+      </Link>
     </div>
   );
 };

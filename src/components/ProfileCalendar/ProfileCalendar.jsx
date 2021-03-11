@@ -32,7 +32,7 @@ const ProfileCalendar = ({ courses }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container text-center">
       <h2>Calendar : </h2>
       {data && <PromotionsCalendar promotions={formatPromotions(data)} />}
     </div>

@@ -14,14 +14,14 @@ const TeacherProfile = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       {data && (
         <>
           <FormationList courses={data} />
           <ProfileCalendar courses={data} />
         </>
       )}
-    </div>
+    </>
   );
 };
 

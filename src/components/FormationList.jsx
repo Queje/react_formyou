@@ -3,7 +3,7 @@ import CourseCard from "./CourseCard/CourseCard";
 
 const FormationList = ({ courses }) => {
   return (
-    <div className="col-12">
+    <div className="col-8">
       <h1>Vous êtes assigné à ces cours :</h1>
       <div className="row">
         {courses?.map((course) => {
