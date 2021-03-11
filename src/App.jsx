@@ -74,7 +74,7 @@ const App = () => {
             <PrivateRoute
               currentUser={currentUser}
               component={Course}
-              path="/courses/:id"
+              path="/courses/:courseId"
             />
             <AdminRoute currentUser={currentUser} component={Admin} />
           </Switch>

@@ -1,8 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const CourseCard = ({course}) => {
-
+const CourseCard = ({ course }) => {
   return (
     <div className="col-6 col-md-4">
       <div className="card">
@@ -13,7 +12,7 @@ const CourseCard = ({course}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CourseCard
+export default CourseCard;

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "./ManageUsers.scss";
-import useFetch from "Hooks/useFetch";
+import "./ManageApproval.scss";
+import useFetch from "hooks/useFetch";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Loading from "components/Loading";
 
-const ManageUsers = () => {
+const ManageApproval = () => {
   const { data, error, isLoading, get, patch } = useFetch();
   const [reviewedUser, setReviewedUser] = useState("");
 
@@ -20,7 +20,7 @@ const ManageUsers = () => {
   }, [reviewedUser]);
 
   return (
-    <div className="ManageUsers">
+    <div className="ManageApproval">
       {error && <h4>{error}</h4>}
       {(isLoading && <Loading />) ||
         (data && (
@@ -70,4 +70,4 @@ const ManageUsers = () => {
   );
 };
 
-export default ManageUsers;
+export default ManageApproval;

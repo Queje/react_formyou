@@ -17,6 +17,9 @@ const Sidebar = () => {
       <NavLink className="nav-link" to="/admin/promotions">
         Manage Promotions
       </NavLink>
+      <NavLink className="nav-link" to="/admin/categories">
+        Manage Categories
+      </NavLink>
     </div>
   );
 };

@@ -80,7 +80,33 @@ const useFetch = () => {
         }
       })
       .then((response) => {
-        setData(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const post = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          setError("Une erreur est survenue");
+        }
+      })
+      .then((response) => {
         setIsLoading(false);
       })
       .catch((error) => {
@@ -95,6 +121,7 @@ const useFetch = () => {
     get,
     patch,
     destroy,
+    post,
   };
 };
 export default useFetch;
