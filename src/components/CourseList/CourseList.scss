@@ -1,0 +1,18 @@
+.displaysearchbar{
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.boxeslist {
+    display: -webkit-inline-box!important;
+}
+
+.boxes{
+    margin-top: 10px!important;
+    margin-right: 10px!important;
+}

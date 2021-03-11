@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import CourseList from "components/CourseList/CourseList.jsx";
 import LandingPage from "pages/LandingPage/LandingPage";
 
 const Home = () => {
@@ -10,14 +9,13 @@ const Home = () => {
     return (
       <div className="Home">
         <LandingPage />
-        <CourseList />
       </div>
     );
   ;}
 
   return (
-    <div className="Home container my-3">
-      <CourseList />
+    <div className="Home">
+      <LandingPage />
     </div>
   );
 };
