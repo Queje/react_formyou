@@ -12,12 +12,11 @@ const ClassroomLine = ({ classroom }) => {
   const newTitle = useRef();
   const [editing, setEditing] = useState();
   const [title, setNewTitle]= useState(classroom.title);
-console.log(newTitle)
   const handleClickEdit = () => {
     if(!editing){
     setEditing(true);
     }else {
-      patch(`/classrooms/${classroom.id}`, {
+      patch(`/admin/classrooms/${classroom.id}`, {
         title: newTitle.current.value,
         });
       setNewTitle(newTitle.current.value);
@@ -29,13 +28,13 @@ console.log(newTitle)
 
   const handleDelete = () => {
     if (window.confirm("Are You Sure ?")){
-      destroy(`/classrooms/${classroom.id}`);
+      destroy(`/admin/classrooms/${classroom.id}`);
     }
     setDeleted(true)
   };
 
   useEffect(()=>{
-    get(`/classrooms/${classroom.id}`)
+    get(`admin/classrooms/${classroom.id}`)
   }, [])
 
 

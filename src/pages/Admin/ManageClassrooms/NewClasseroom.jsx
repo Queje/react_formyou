@@ -10,7 +10,7 @@ const NewClassroom = ({ handleNewClassroom }) => {
     if(!creating){
       setCreating(true)
     }else{
-      post(`/classrooms`, { 
+      post(`/admin/classrooms/`, { 
         title: newTitle.current.value 
       });
       setCreating(false);

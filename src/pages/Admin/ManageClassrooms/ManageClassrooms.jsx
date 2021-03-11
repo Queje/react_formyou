@@ -19,16 +19,16 @@ const ManageClassrooms = () => {
 
 const createClassroom = (userData,e) => {
   e.preventDefault();
-  post(`/classrooms`, {"classroom":{"title": userData}});
+  post(`/admin/classrooms/`, {"classroom":{"title": userData}});
   setNewClassroom(newClassroom);
 };
 
 useEffect (() => {
-  get('/classrooms');
+  get('admin/classrooms/');
 }, [deleteClassroom]);
 
 useEffect (() => {
-  get('/classrooms');
+  get('admin/classrooms/');
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [newClassroom]);
 
