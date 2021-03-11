@@ -1,6 +1,6 @@
 import useFetch from "hooks/useFetch";
-import React, { useEffect } from "react";
-import Student from "./componants/Student/Student";
+import { useEffect } from "react";
+import Student from "./components/Student/Student";
 
 const Promotion = ({ match }) => {
   const { data, get } = useFetch();
