@@ -22,16 +22,15 @@ const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
         </div>
         <div className="card-body">
           <p className="card-text">{course.content}</p>
-         {location.pathname === "/" && currentUser && (
-
-         <Link to={`/courses/${course.id}`} className="btn btn-primary mx-2">See sessions</Link>
-         )}
-            {currentUser && currentUser.role === "admin" && (
+          {location.pathname === "/" && currentUser && (
+            <Link to={`/courses/${course.id}`} className="btn btn-primary mx-2">See sessions</Link>
+          )}
+          {location.pathname === "/admin/courses" && (
             <>
               <button className="btn btn-success mx-2"onClick={(e) => editingCourse(course.id)} type="type" >Update</button>
               <button className="btn btn-danger mx-2" onClick={(e) => deleteCourse(course.id)} type="button" >Delete</button>
             </>
-         )}
+          )}
         </div>
       </div>
     </div>
