@@ -8,6 +8,7 @@ import "./Admin.scss";
 import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ManageClassrooms from "./ManageClassrooms";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -41,6 +42,11 @@ const Admin = () => {
           currentUser={currentUser}
           component={ManagePromotions}
           path="/admin/promotions"
+        />
+        <AdminRoute
+          currentUser={currentUser}
+          component={ManageClassrooms}
+          path="/admin/classrooms"
         />
       </Switch>
     </div>
