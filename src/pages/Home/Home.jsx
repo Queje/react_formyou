@@ -16,7 +16,7 @@ const Home = () => {
   ;}
 
   return (
-    <div className="Home">
+    <div className="Home container my-3">
       <CourseList />
     </div>
   );

@@ -16,16 +16,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar static-top py-2">
-      <div className="navbar nav-items mr-auto">
-        <Link to="/">
-          <h2 className="navbartitle">FormYou</h2>
+    <nav className="navbar navbar-expand-lg static-top py-2 px-4">
+      <div className="mr-auto">
+        <Link to="/" className="navbar-brand text-white">
+          FormYou
         </Link>
       </div>
 
       {!currentUser && (
         <>
-          <Link className="nav-link mr-3" to="/register">
+          <Link className="nav-link" to="/register">
             Sign up
           </Link>
           <Link className="nav-link btn btn-primary" to="/login">

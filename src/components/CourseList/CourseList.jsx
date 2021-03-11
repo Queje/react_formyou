@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import CourseCard from "components/CourseCard/CourseCard";
 import useFetch from "hooks/useFetch";
 import Loading from "components/Loading";
@@ -12,9 +12,8 @@ const CourseList = () => {
   }, []);
 
   return (
-    <div className="CourseList">
-      <h2>Nos Formations</h2>
-
+    <>
+      <h2 className="text-center mb-4">Our trainings</h2>
       {error && <h4>{error}</h4>}
       {(isLoading && <Loading />) ||
         (data && (
@@ -24,7 +23,7 @@ const CourseList = () => {
             ))}
           </div>
         ))}
-    </div>
+    </>
   );
 };
 

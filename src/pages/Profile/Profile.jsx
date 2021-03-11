@@ -27,7 +27,8 @@ const Profile = () => {
   }, [updatedInfo]);
 
   return (
-    <div className="row my-3">
+    <div className="row my-5">
+
       <div className="col-4 text-center">
         <ProfileDisplay data={profile} />
         <EditProfile onSubmit={updateProfile} />
