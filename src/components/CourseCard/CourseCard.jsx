@@ -3,16 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import useFetch  from 'hooks/useFetch';
 import { useSelector } from 'react-redux';
 
-const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
+const CourseCard = ({course, editingCourse, deleteCourse }) => {
 
   const location = useLocation();
-  const {  destroy } = useFetch();
   const currentUser = useSelector((state) => state.auth.currentUser);
-
-  const deleteCourse = (id) => {
-    destroy(`/admin/courses/${id}`);
-    handleDeletedCourse(id)
-  };
 
   return (
     <div className="col-6 my-3">
