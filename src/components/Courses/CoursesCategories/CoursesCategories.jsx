@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import useFetch from "hooks/useFetch";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import './CoursesCategories.scss'
 
 const CoursesCategories = ({ getCategory, previousCategory }) => {
 
@@ -33,6 +34,7 @@ const CoursesCategories = ({ getCategory, previousCategory }) => {
 
   return (
     <Select
+      className="select"
       closeMenuOnSelect={false}
       components={animatedComponents}
       onChange={handleChange}
