@@ -7,13 +7,13 @@ import CourseLine from "./CourseLine";
 
 const StudentFeed = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const { destroy, error, isLoading, get, data: courses } = useFetch();
+  const { error, isLoading, get, data: courses } = useFetch();
 
   useEffect(() => {
     get(`/users/${currentUser.id}/subscriptions`);
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(courses);
   return (
     <div className="StudentFeed">
       {error && <h4>{error}</h4>}

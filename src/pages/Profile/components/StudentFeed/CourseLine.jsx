@@ -1,13 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import "./CourseLine.scss";
 import { Link } from "react-router-dom";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const CourseLine = ({ course }) => {
-  const { data, patch, get, destroy } = useFetch();
-  const newTitle = useRef();
-  const [title, setNewTitle] = useState(course.title);
+  const { data, get, destroy } = useFetch();
   const [deleted, setDeleted] = useState();
 
   const handleUnsubscribe = (id) => {
@@ -21,9 +19,11 @@ const CourseLine = ({ course }) => {
     get(`/promotions/${course.promotion_id}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     data &&
-    !deleted && (
+    !deleted &&
+    ((
       <tr key={course.id}>
         <td>{course.id}</td>
         <td>
@@ -41,7 +41,7 @@ const CourseLine = ({ course }) => {
           />
         </td>
       </tr>
-    )
+    ) || <></>)
   );
 };
 
