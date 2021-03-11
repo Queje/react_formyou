@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useFetch from "hooks/useFetch";
 import PromotionsCalendar from "components/Promotions/PromotionsCalendar";
-
+import { Link } from 'react-router-dom';
 const Promotions = ({ course }) => {
   const { data, get } = useFetch();
 
@@ -27,6 +27,7 @@ const Promotions = ({ course }) => {
 
   return (
     <div className="Promotions">
+      <Link to={`/`} className="btn btn-primary mx-2">Back to Home</Link>
       {(data && data.length > 0 && (
         <>
           {(data.length === 1 && <p>{data.length} session found</p>) || (
