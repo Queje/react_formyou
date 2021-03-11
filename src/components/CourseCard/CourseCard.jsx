@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useFetch  from 'hooks/useFetch';
+import { useSelector } from 'react-redux';
 
 const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
 
   const location = useLocation();
   const {  destroy } = useFetch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
 
   const deleteCourse = (id) => {
     destroy(`/admin/courses/${id}`);
@@ -20,14 +22,16 @@ const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
         </div>
         <div className="card-body">
           <p className="card-text">{course.content}</p>
-         {location.pathname === "/" &&
+         {location.pathname === "/" && currentUser && (
+
          <Link to={`/courses/${course.id}`} className="btn btn-primary">See sessions</Link>
+         
           || 
             <>
               <button onClick={(e) => editingCourse(course.id)} type="type" >Update</button>
               <button onClick={(e) => deleteCourse(course.id)} type="button" >Delete</button>
             </>
-          }
+         )}
         </div>
       </div>
     </div>
