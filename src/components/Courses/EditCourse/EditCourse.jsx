@@ -14,7 +14,7 @@ const EditCourse = ( { course, handleNewCourse } ) => {
   const [newCategory, setCategory] = useState(category);
 
   const updateCourse = (updatedCourse) => {
-    patch(`/courses/${course.id}`, updatedCourse);
+    patch(`/admin/courses/${course.id}`, updatedCourse);
     handleNewCourse(updatedCourse)
   };
 
@@ -34,14 +34,15 @@ const EditCourse = ( { course, handleNewCourse } ) => {
       "title": newTitle,
     	"content": newContent,
 			"teacher_id": newTeacher,
-      "category_id": newTeacher
+      "category_ids": newCategory
     }
     updateCourse(post)
+    console.log("Updated post:",post )
   }
 
   useEffect(() => {get("/admin/users");}, []);
 
-  console.log("category !!!!!", category)
+
 
   return ( course &&
     <div className="container" >
@@ -49,7 +50,7 @@ const EditCourse = ( { course, handleNewCourse } ) => {
       <div className="input">
         <input type="text"  placeholder={title} onChange={(e) => setNewTitle(e.target.value)} />
         <textarea type="text-area"  placeholder={content} onChange={(e) => setNewContent(e.target.value)} />
-        <CoursesCategories getCategory={getCategory} previousCategory={newCategory}  />
+        <CoursesCategories getCategory={getCategory}  />
         <select
           value={title}
           placeholder={`${teacher.first_name} ${teacher.last_name}`}

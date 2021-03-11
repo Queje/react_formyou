@@ -8,7 +8,7 @@ const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
   const { data, get, patch, destroy, post } = useFetch();
 
   const deleteCourse = (id) => {
-    destroy(`/courses/${id}`);
+    destroy(`/admin/courses/${id}`);
     handleDeletedCourse(id)
   };
 
