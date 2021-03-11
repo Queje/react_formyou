@@ -1,39 +1,38 @@
-.container{
+.CreateCourse .container {
   background-color: rgb(255, 209, 124);
   display: flex;
   flex-direction: column;
   padding-bottom: 60px;
-  h3{
+  h3 {
     margin: auto;
     padding-bottom: 30px;
   }
-  .form{
+  .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    label{
+    label {
       display: flex;
       flex-direction: column;
       align-items: center;
-      textarea{
+      textarea {
         min-width: 400px;
         min-height: 250px;
         height: auto;
       }
     }
-    .title{
+    .title {
       max-width: 500px;
       min-width: 200px;
     }
-    .content{
+    .content {
       min-height: auto;
     }
   }
-  .custom-button{
+  .custom-button {
     max-width: 400px;
     min-width: 200px;
     margin: auto;
     background-color: darkorange;
- 
   }
 }
