@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
 import EditProfile from "pages/Profile/components/EditProfile";
 import ProfileDisplay from "pages/Profile/components/ProfileDisplay";
+import AdminFeed from "pages/Profile/components/AdminFeed";
+import StudentFeed from "pages/Profile/components/StudentFeed";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -29,9 +31,22 @@ const Profile = () => {
         <ProfileDisplay data={profile} />
         <EditProfile onSubmit={updateProfile} />
       </div>
-      <div className="col-8">
-        <h1>🛠 TODO - Fetch la liste des sessions où le user est inscrit 🛠</h1>
+
+      <div className="col-8">        
+        {currentUser.role === "admin" &&
+          <AdminFeed />       
+        }
+        
+        {currentUser.role === "teacher" &&
+          <h2>Coucou teacher WIP Paul</h2>
+        }
+
+        {currentUser.role === "student" &&
+          <StudentFeed />
+        }
       </div>
+
+
     </div>
   );
 };
