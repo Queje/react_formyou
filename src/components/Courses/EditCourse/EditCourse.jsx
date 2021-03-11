@@ -37,7 +37,6 @@ const EditCourse = ( { course, handleNewCourse } ) => {
       "category_ids": newCategory
     }
     updateCourse(post)
-    console.log("Updated post:",post )
   }
 
   useEffect(() => {get("/admin/users");}, []);

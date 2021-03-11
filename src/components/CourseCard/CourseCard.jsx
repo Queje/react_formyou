@@ -5,13 +5,12 @@ import useFetch  from 'hooks/useFetch';
 const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
 
   const location = useLocation();
-  const { data, get, patch, destroy, post } = useFetch();
+  const {  destroy } = useFetch();
 
   const deleteCourse = (id) => {
     destroy(`/admin/courses/${id}`);
     handleDeletedCourse(id)
   };
-
 
   return (
     <div className="col-6 my-3">

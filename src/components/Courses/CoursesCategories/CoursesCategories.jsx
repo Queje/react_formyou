@@ -29,7 +29,7 @@ const CoursesCategories = ({ getCategory, previousCategory }) => {
     }
   }
 
-  useEffect(() => {get("/categories");}, []);
+  useEffect(() => {get("/admin/categories");}, []);
 
   return (
     <Select

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import useFetch from "hooks/useFetch";
 import "./ManageCourses.scss";
 import CourseCard from 'components/CourseCard/CourseCard';
-import CreateCourse from '../../../components/Courses/CreateCourse/CreateCourse';
-import EditCourse from '../../../components/Courses/EditCourse/EditCourse';
+import CreateCourse from 'components/Courses/CreateCourse/CreateCourse';
+import EditCourse from 'components/Courses/EditCourse/EditCourse';
 
 const ManageCourses = () => {
 
@@ -21,7 +21,6 @@ const ManageCourses = () => {
     (creating && setCreating(false));
     const selectedCourse = data.filter(c => c.id === id);
     setCourse(selectedCourse[0]);
-    console.log("selectedCourse", selectedCourse[0])
   };
 
   const handleNewCourse = (info) => {
@@ -36,8 +35,6 @@ const ManageCourses = () => {
 
   useEffect(() => {get("/courses"); }, [courseAdded]);
 
-  console.log("courseAdded", courseAdded)
- 
 
   return (
     <div className="ManageCourses">

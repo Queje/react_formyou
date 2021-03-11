@@ -16,7 +16,6 @@ const CreateCourse = ( { handleNewCourse } ) => {
   const saveCourse = (course) => {
     post(`/admin/courses`, course);
     handleNewCourse(course)
-    console.log("saved course", course)
   }
 
   const getCategory = (id) => {
@@ -32,7 +31,6 @@ const CreateCourse = ( { handleNewCourse } ) => {
     }
     saveCourse(post)
   }
-  
 
   useEffect(() => {get("/admin/users");}, []);
 
