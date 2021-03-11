@@ -23,8 +23,9 @@ const ManageAllUsers = () => {
       {(isLoading && <Loading />) ||
         (data && (
           <>
-            <h2>Users pending for review : {data.length}</h2>
-
+            <div className="text-center mb-3">
+              <h3>Manage All Users</h3>
+            </div>
             <Table striped bordered hover>
               <thead>
                 <tr>

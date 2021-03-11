@@ -25,7 +25,10 @@ const ManageApproval = () => {
       {(isLoading && <Loading />) ||
         (data && (
           <>
-            <h2>Users pending for review : {data.length}</h2>
+            <div className="text-center">
+              <h3>Manage Approvals</h3>
+              <p className="lead">Users pending for review : {data.length}</p>
+            </div>
 
             <Table striped bordered hover>
               <thead>
