@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import useFetch  from 'hooks/useFetch';
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({course, editingCourse, handleDeletedCourse }) => {
+
+  const location = useLocation();
+  const {  destroy } = useFetch();
+
+  const deleteCourse = (id) => {
+    destroy(`/admin/courses/${id}`);
+    handleDeletedCourse(id)
+  };
+
   return (
     <div className="col-6 my-3">
       <div className="card text-center">
@@ -9,7 +20,14 @@ const CourseCard = ({ course }) => {
         </div>
         <div className="card-body">
           <p className="card-text">{course.content}</p>
-          <Link to={`/courses/${course.id}`} className="btn btn-primary">See sessions</Link>
+         {location.pathname === "/" &&
+         <Link to={`/courses/${course.id}`} className="btn btn-primary">See sessions</Link>
+          || 
+            <>
+              <button onClick={(e) => editingCourse(course.id)} type="type" >Update</button>
+              <button onClick={(e) => deleteCourse(course.id)} type="button" >Delete</button>
+            </>
+          }
         </div>
       </div>
     </div>

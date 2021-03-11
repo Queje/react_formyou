@@ -15,6 +15,7 @@ const CategoryLine = ({ category }) => {
   const [title, setNewTitle] = useState(category.title);
   const [deleted, setDeleted] = useState();
 
+
   const handleClickEdit = () => {
     if (!editing) {
       setEditing(true);
