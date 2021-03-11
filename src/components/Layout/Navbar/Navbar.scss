@@ -2,16 +2,8 @@
 
 .navbar {
   background-color: $color-orange;
+}
 
-  nav {
-    width: max-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    vertical-align: middle !important;
-  }
-
-  .navbartitle {
-    color: antiquewhite;
-  }
+.navbar-brand {
+  font-size: 30px;
 }

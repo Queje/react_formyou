@@ -3,9 +3,9 @@ import capitalize from "capitalize";
 const ProfileDisplay = ( {data} ) => {
   return (
     <>
-      <p>{data.first_name} {data.last_name}</p>
+      <h5>{data.first_name} {data.last_name}</h5>
       <p>{data.email}</p>
-      <p>Role: {capitalize(data.role)}</p>
+      <p>{capitalize(data.role)}</p>
     </>
   );
 };

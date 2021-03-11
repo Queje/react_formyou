@@ -29,29 +29,28 @@ const CourseList = () => {
   useEffect(() => {
     setCourse(data);
   }, [data])
-
-  console.log(categoryList.join())
   
   return (
-    <div className="CourseList">
-      <div className="displaysearchbar">
-        <SearchBar getInput={setInput}/>
-        <CategoryList handleCategoryFilter={handleCategoryFilter}/>
+      <div className="CourseList">
+        <div className="displaysearchbar">
+          <SearchBar getInput={setInput}/>
+          <CategoryList handleCategoryFilter={handleCategoryFilter}/>
+        </div>
+          {error && <h4>{error}</h4>}
+          {(isLoading && <Loading />) ||
+          (course && (
+            <div className="row">
+              {course.filter((value) => {
+                if(input === ""){return value}
+                else if (value.title.toLowerCase().includes(input.toLowerCase())){
+                  return value}
+              }).map((courseinfo) => (
+                <CourseCard key={courseinfo.id} course={courseinfo} />
+              ))}
+            </div>
+          ))
+        }
       </div>
-      {error && <h4>{error}</h4>}
-      {(isLoading && <Loading />) ||
-        (course && (
-          <div className="row">
-            {course.filter((value) => {
-              if(input === ""){return value}
-              else if (value.title.toLowerCase().includes(input.toLowerCase())){
-                return value}
-            }).map((courseinfo) => (
-              <CourseCard key={courseinfo.id} course={courseinfo} />
-            ))}
-          </div>
-        ))}
-    </div>
   );
 };
 

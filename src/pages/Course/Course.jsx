@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Promotions from "components/Promotions/Promotions";
 import useFetch from "hooks/useFetch";
 import { useParams } from "react-router-dom";
+import capitalize from "capitalize";
 
 const Course = () => {
   const { courseId } = useParams();
@@ -17,7 +18,9 @@ const Course = () => {
       {error && <h4>{error}</h4>}
       {data && (
         <>
-          <h1>Next promotion of {data.title}'s course</h1>
+          <div className="text-center mt-5">
+            <h3>Next promotion of {capitalize(data.title)}'s course</h3>
+          </div>
           <Promotions course={data} />
         </>
       )}
