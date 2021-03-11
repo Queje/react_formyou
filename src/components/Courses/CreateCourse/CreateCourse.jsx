@@ -37,11 +37,23 @@ const CreateCourse = ( { handleNewCourse } ) => {
   return (
     <div className="container" >
       <h3>Create your new course</h3>
-      <div className="input">
-        <input type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)} />
-        <textarea type="text-area" placeholder="content" onChange={(e) => setContent(e.target.value)} />
-        <CoursesCategories getCategory={getCategory}  />
-        <select
+      <div className="form">
+        <label>
+          Title:<br></br>
+          <input className="title" type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)} />
+        </label>
+        <label className="content">
+          Content:<br></br>
+          <textarea  type="text-area" placeholder="content" onChange={(e) => setContent(e.target.value)} />
+        </label>
+        <label>
+          Categories:<br></br>
+          <CoursesCategories className="category" getCategory={getCategory}  />
+        </label>
+        <label>
+          Teacher:<br></br>
+          <select
+          className="teachers"
           value={teacher}
           name="role"
           onChange={(e) => setTeacher(e.target.value)}
@@ -51,8 +63,9 @@ const CreateCourse = ( { handleNewCourse } ) => {
               <option key={teacher.id} value={teacher.id}>{teacher.first_name} {teacher.last_name}</option>
           )}
         </select>
+        </label>
       </div>
-      <button type="button" onClick={format} >Post</button>
+      <button className="custom-button" type="button" onClick={format} >Post</button>
     </div>
   )
 };

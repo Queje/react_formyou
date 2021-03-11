@@ -28,6 +28,11 @@ const ManageCourses = () => {
     setCreating(false)
   }
 
+  const creatingCourse = () => {
+    (editing && setEditing(false));
+    setCreating(true);
+  };
+
 
   const handleDeletedCourse = (info) => {
     setCourseDeleted(info)
@@ -35,21 +40,21 @@ const ManageCourses = () => {
 
   useEffect(() => {get("/courses"); }, [courseAdded]);
 
-
   return (
     <div className="ManageCourses">
-    <h1>This is where we'll manage courses</h1>
-    {!creating && <button type="button" onClick={(e) => setCreating(true)} >Create a new course</button> || <CreateCourse handleNewCourse={handleNewCourse} />  }
-    {editing && <EditCourse course={course} handleNewCourse={handleNewCourse}  />  }
-      <div className="courses" >
-        <h2>Courses</h2>
-          {data && (
-            <div className="row">
-              {data.map((e) => (
-                <CourseCard key={e.id} course={e} editingCourse={editingCourse} handleDeletedCourse={handleDeletedCourse} />
-              ))}
-            </div>
-          )}
+      <div className="container" >
+        {!creating && <button className="custom-button" type="button" onClick={creatingCourse} >Create a new course</button> || <CreateCourse handleNewCourse={handleNewCourse} />  }
+        {editing && <EditCourse course={course} handleNewCourse={handleNewCourse}  />  }
+          <div className="courses" >
+            <h2>Courses</h2>
+              {data && (
+                <div className="row">
+                  {data.map((e) => (
+                    <CourseCard key={e.id} course={e} editingCourse={editingCourse} handleDeletedCourse={handleDeletedCourse} />
+                  ))}
+                </div>
+              )}
+          </div>
       </div>
     </div>
     );
