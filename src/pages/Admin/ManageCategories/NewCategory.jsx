@@ -6,7 +6,6 @@ const NewCategory = ({ handleNewCategory }) => {
   const newTitle = useRef();
   const [creating, setCreating] = useState(false);
   const { post } = useFetch();
-  console.log(newTitle)
 
   const handleClick = () => {
     if (!creating) {
