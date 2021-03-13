@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useFetch from "hooks/useFetch";
 import "./ManageCourses.scss";
 import CourseCard from 'components/CourseCard/CourseCard';
@@ -8,13 +7,11 @@ import EditCourse from 'components/Courses/EditCourse/EditCourse';
 
 const ManageCourses = () => {
 
-  const { data, get, patch, destroy, post } = useFetch();
+  const { data, get, destroy } = useFetch();
 
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [course, setCourse] = useState({});
-  const [courseAdded, setCourseAdded] = useState("");
-  const [courseDeleted, setCourseDeleted] = useState("");
 
   const editingCourse = (id) => {
     setEditing(true);
@@ -23,8 +20,7 @@ const ManageCourses = () => {
     setCourse(selectedCourse[0]);
   };
 
-  const handleNewCourse = (info) => {
-    setCourseAdded(info)
+  const handleNewCourse = () => {
     setCreating(false)
   }
 
@@ -33,12 +29,13 @@ const ManageCourses = () => {
     setCreating(true);
   };
 
+  const deleteCourse = (info) => {
+    destroy(`/admin/courses/${info}`);
+  };
 
-  const handleDeletedCourse = (info) => {
-    setCourseDeleted(info)
-  }
-
-  useEffect(() => {get("/courses"); }, [courseAdded]);
+  useEffect(() => {
+    get("/courses"); }
+  , [data]);
 
   return (
     <div className="ManageCourses">
@@ -50,14 +47,14 @@ const ManageCourses = () => {
               {data && (
                 <div className="row">
                   {data.map((e) => (
-                    <CourseCard key={e.id} course={e} editingCourse={editingCourse} handleDeletedCourse={handleDeletedCourse} />
+                    <CourseCard key={e.id} course={e} editingCourse={editingCourse} deleteCourse={deleteCourse} />
                   ))}
                 </div>
               )}
           </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default ManageCourses;
